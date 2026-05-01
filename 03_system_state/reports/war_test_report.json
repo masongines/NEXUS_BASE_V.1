@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-05-01T07:48:15.473640+00:00",
+  "generated_at": "2026-05-01T09:49:27.093517+00:00",
   "system": "NEXUS Base V1",
   "test_type": "Defensive Sandbox War Test",
   "verdict": "PASS",
   "summary": {
-    "PASS": 21,
+    "PASS": 36,
     "FAIL": 0,
     "WARN": 0
   },
   "results": [
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\executor.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\executor.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\security_monitor.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\security\\security_monitor.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\quarantine_handler.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\security\\quarantine_handler.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\02_config\\execution_trust_registry.json",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\02_config\\execution_trust_registry.json",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\security\\threat_log.txt",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\04_logs\\security\\threat_log.txt",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\execution\\log.txt",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\04_logs\\execution\\log.txt",
       "status": "PASS",
       "details": "present"
     },
@@ -72,7 +72,7 @@
     {
       "test": "quarantine_appends_threat_log",
       "status": "PASS",
-      "details": "before=5, after=6"
+      "details": "before=14, after=15"
     },
     {
       "test": "trust_registry_valid_json",
@@ -113,6 +113,81 @@
       "test": "windows_encoding_emoji_risk",
       "status": "PASS",
       "details": "no known risky emoji found in scanned files"
+    },
+    {
+      "test": "A1_no_bak_files_committed",
+      "status": "PASS",
+      "details": "no *.bak/backup/old files tracked"
+    },
+    {
+      "test": "A2_no_pycache_committed",
+      "status": "PASS",
+      "details": "no __pycache__ tracked"
+    },
+    {
+      "test": "A3_gitignore_has_required_patterns",
+      "status": "PASS",
+      "details": "all required patterns present"
+    },
+    {
+      "test": "A4_internal_docs_absent",
+      "status": "PASS",
+      "details": "no internal draft docs committed"
+    },
+    {
+      "test": "B5_license_apache",
+      "status": "PASS",
+      "details": "LICENSE present with Apache marker"
+    },
+    {
+      "test": "B6_contributing_references_sandbox",
+      "status": "PASS",
+      "details": "CONTRIBUTING.md present with sandbox reference"
+    },
+    {
+      "test": "B7_requirements_exists",
+      "status": "PASS",
+      "details": "requirements.txt present"
+    },
+    {
+      "test": "B8_pyproject_python_pin",
+      "status": "PASS",
+      "details": "pyproject.toml present with requires-python"
+    },
+    {
+      "test": "B9_ci_workflow_exists",
+      "status": "PASS",
+      "details": ".github/workflows/ci.yml present"
+    },
+    {
+      "test": "C10_readme_has_quickstart",
+      "status": "PASS",
+      "details": "## Quickstart found"
+    },
+    {
+      "test": "C11_readme_has_war_test_command",
+      "status": "PASS",
+      "details": "run command present"
+    },
+    {
+      "test": "C12_readme_links_docs",
+      "status": "PASS",
+      "details": "DEEP_DIVE and CAPSTONE_PAPER linked"
+    },
+    {
+      "test": "C13_readme_has_limitations",
+      "status": "PASS",
+      "details": "## Limitations section found"
+    },
+    {
+      "test": "D14_governance_ref_populated",
+      "status": "PASS",
+      "details": "40 items"
+    },
+    {
+      "test": "D15_decision_register_has_entries",
+      "status": "PASS",
+      "details": "2 record(s)"
     }
   ]
 }
