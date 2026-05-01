@@ -23,7 +23,7 @@ NEXUS Base V1 answers that question with a working, testable control architectur
 
 | Property | Value |
 |---|---|
-| War test result | **21 PASS / 0 WARN / 0 FAIL** |
+| War test result | **36 PASS / 0 WARN / 0 FAIL** |
 | Classification | Tier 3.5 — Governed + Adaptive Execution + Defensive |
 | Deployment type | Local-first (no external services required) |
 | Python requirement | 3.11+ |
@@ -44,7 +44,7 @@ python --version
 
 # Run the defensive war test (proof of governance)
 python nexus_war_test.py
-# Expected: 21 PASS / 0 WARN / 0 FAIL
+# Expected: 36 PASS / 0 WARN / 0 FAIL
 
 # Run a live execution through the full governed pipeline
 python 01_core/execution/executor.py
@@ -55,11 +55,16 @@ python 01_core/execution/executor.py
 
 ## Architecture
 
-```
-Action → Security Monitor → Trust Registry → Approval Gate → Execution Engine → Logger
-            │                    │                │
-         Quarantine           Auto-approve     Human gate
-         (T2 threats)         (trusted ops)    (unknown ops)
+```mermaid
+flowchart LR
+    A([Action]) --> B[Security Monitor]
+    B -->|T2 threat detected| C[(Quarantine Log)]
+    B -->|Clean| D[Trust Registry]
+    D -->|T3 auto-approved| E[Execution Engine]
+    D -->|Untrusted| F{Approval Gate}
+    F -->|Approved| E
+    F -->|Denied| G[(Execution Log\nstatus: denied)]
+    E --> G
 ```
 
 Every action entering the system is evaluated in sequence:
@@ -109,6 +114,9 @@ Every action entering the system is evaluated in sequence:
 | [NEXUS Base V1 Deep Dive](NEXUS_BASE_V1_DEEP_DIVE.md) | Full technical architecture, governance model, and design rationale |
 | [Capstone Paper](CAPSTONE_PAPER.md) | Capstone project abstract and scope statement |
 | [Contributing](CONTRIBUTING.md) | How to contribute, review, and report issues |
+| [ADR-001: Governance-First Architecture](docs/adr/ADR-001-governance-first-architecture.md) | Why authorization gates precede execution |
+| [ADR-002: Rule-Based Threat Detection](docs/adr/ADR-002-rule-based-threat-detection.md) | Why rule-based over ML/embedding detection |
+| [ADR-003: Local-First Architecture](docs/adr/ADR-003-local-first-architecture.md) | Why local-first over cloud-native deployment |
 
 ---
 
@@ -122,7 +130,7 @@ The war test (`nexus_war_test.py`) confirms that:
 - Trust-based auto-approval works for allowlisted operators and action types
 - All events are logged regardless of execution outcome
 
-**Current result: 21 PASS / 0 WARN / 0 FAIL**
+**Current result: 36 PASS / 0 WARN / 0 FAIL**
 
 The CI pipeline (`.github/workflows/ci.yml`) re-runs the war test on every push to `main` and every pull request, maintaining a live green badge at the top of this file.
 
