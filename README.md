@@ -60,6 +60,7 @@ Action → Security → Trust → Approval → Execution → Logging
 
 ## Capstone Documentation
 
+- [NEXUS Base V1 Deep Dive](NEXUS_BASE_V1_DEEP_DIVE.md)
 - [System Demonstration](SYSTEM_DEMONSTRATION.md)
 - [Capstone Paper](CAPSTONE_PAPER.md)
 - [Demo Walkthrough](DEMO_WALKTHROUGH.md)
