@@ -1,3 +1,23 @@
+"""
+NEXUS Base V1 — Capstone Package Builder
+
+Purpose:
+    Generates the capstone documentation package for NEXUS Base V1.
+    Writes a set of structured markdown documents to the repo root and
+    appends capstone links to README.md.
+
+Historical note:
+    Some documents in the DOCS dict (LINKEDIN_POST.md, FACULTY_MESSAGE.md,
+    GITHUB_PROJECT_ROADMAP.md, PUBLICATION_CHECKLIST.md) are internal
+    communication materials not published to the public GitHub repo.
+    These are preserved separately at NEXUS_PRIVATE_DOCS/. Running this
+    script will recreate them locally; they remain gitignored on the
+    public surface.
+
+Run:
+    python nexus_capstone_package_builder.py
+"""
+
 from pathlib import Path
 from datetime import datetime, UTC
 

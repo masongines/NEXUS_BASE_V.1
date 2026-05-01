@@ -1,3 +1,22 @@
+"""
+NEXUS Base V1 — Security Wave 2 Bootstrap
+
+Purpose:
+    Builds the active security enforcement layer for NEXUS Base V1.
+    Creates security_monitor.py (threat detection) and
+    quarantine_handler.py (threat logging), then patches executor.py
+    to call security checks BEFORE trust and approval evaluation.
+
+Role in NEXUS flow:
+    Wave 2 activates the security gate. After this bootstrap runs, the
+    executor enforces: Action → Security → (Trust → Approval → Execution).
+    The security check happens first; a quarantined action never reaches
+    the approval gate.
+
+Run:
+    python nexus_security_wave2_bootstrap.py
+"""
+
 from pathlib import Path
 import json
 
@@ -29,6 +48,12 @@ def write_file(path, content):
 # SECURITY MONITOR
 # -----------------------------
 def create_security_monitor():
+    """Write security_monitor.py to the execution security directory.
+
+    The monitor exposes a ``detect_threat(action)`` function that scans
+    the action payload for known threat-trigger phrases and returns a
+    threat dict with ``threat``, ``level``, and ``reason`` fields.
+    """
     write_file(
         ROOT / "01_core/execution/security/security_monitor.py",
         '''
@@ -59,6 +84,12 @@ def detect_threat(action):
 # QUARANTINE HANDLER
 # -----------------------------
 def create_quarantine_handler():
+    """Write quarantine_handler.py to the execution security directory.
+
+    The handler exposes a ``quarantine(action, threat_info)`` function that
+    appends a structured JSON entry to the threat log and prints a notice.
+    It is called by the executor when detect_threat returns threat=True.
+    """
     write_file(
         ROOT / "01_core/execution/security/quarantine_handler.py",
         '''
@@ -90,6 +121,13 @@ def quarantine(action, threat_info):
 # EXECUTOR PATCH
 # -----------------------------
 def patch_executor():
+    """Inject security hook imports and the pre-approval security check into executor.py.
+
+    The patch inserts ``detect_threat`` and ``quarantine`` calls before the
+    approval gate so that security evaluation always precedes trust evaluation.
+    Idempotent: if ``security_monitor`` is already present in the file, the
+    patch is skipped.
+    """
     executor_path = ROOT / "01_core/execution/executor.py"
 
     try:

@@ -1,4 +1,19 @@
-# nexus_phase_bcd_bootstrap.py
+"""
+NEXUS Base V1 — Phase BCD Bootstrap
+
+Purpose:
+    Comprehensive bootstrap for Phases B, C, and D of the NEXUS execution
+    architecture. Creates execution files, config files, governance files,
+    system state stubs, the AEGIS adapter, and the initial execution log.
+
+Role in NEXUS flow:
+    This script reconstructs the full Phase B–D scaffold in a single pass.
+    It is idempotent: files that already exist are skipped, not overwritten.
+    Useful for clean-room setup or disaster recovery of the execution layer.
+
+Run:
+    python nexus_phase_bcd_bootstrap.py
+"""
 
 import json
 from pathlib import Path
@@ -20,6 +35,11 @@ def log_failed(p, e): FAILED.append(f"{p} -> {e}")
 # 1. VERIFY ROOT
 # -----------------------------------
 def verify_root_structure():
+    """Assert that all required top-level NEXUS directories are present.
+
+    Raises:
+        Exception: If any required directory is missing.
+    """
     required = ["00_governance_ref", "01_core", "02_config", "04_logs"]
     for r in required:
         if not (ROOT / r).exists():
@@ -30,6 +50,14 @@ def verify_root_structure():
 # 2. CREATE DIRS
 # -----------------------------------
 def ensure_dir(path):
+    """Create a directory (and any missing parents) if it does not exist.
+
+    Args:
+        path: Directory path to create.
+
+    Side effects:
+        Appends the path string to CREATED or SKIPPED tracking lists.
+    """
     try:
         if not path.exists():
             path.mkdir(parents=True)
@@ -48,6 +76,15 @@ def create_directory_structure():
 # 3. SAFE FILE WRITE
 # -----------------------------------
 def write_file(path, content):
+    """Write text content to path only if the file does not already exist.
+
+    Args:
+        path: Destination file path.
+        content: Text or JSON-serialisable object to write.
+
+    Side effects:
+        Appends the path string to CREATED, SKIPPED, or FAILED lists.
+    """
     try:
         if not path.exists():
             path.write_text(content, encoding="utf-8")
@@ -215,6 +252,7 @@ def run_validation_test():
 # MAIN
 # -----------------------------------
 def main():
+    """Run the full Phase BCD bootstrap sequence in dependency order."""
     verify_root_structure()
     create_directory_structure()
     create_execution_files()

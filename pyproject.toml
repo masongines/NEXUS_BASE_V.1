@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "nexus-base-v1"
+version = "1.0.0"
+description = "Governed AI Execution System with approval gating, trust-based automation, and rule-based defensive security validation."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Mason Gines" }
+]
+keywords = ["ai-governance", "security", "approval-gating", "trust", "autonomous-systems"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/masongines/NEXUS_BASE_V.1"
+Repository = "https://github.com/masongines/NEXUS_BASE_V.1"
+"Bug Tracker" = "https://github.com/masongines/NEXUS_BASE_V.1/issues"

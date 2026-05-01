@@ -1,3 +1,20 @@
+"""
+NEXUS Base V1 — Security Wave 1 Bootstrap
+
+Purpose:
+    Builds the first security layer for NEXUS Base V1.
+    Creates the threat model, security log schema, threat log file,
+    known attack patterns reference, and the security system map.
+
+Role in NEXUS flow:
+    Wave 1 establishes the *governance* side of security — the documents
+    and schemas that define what threats are and how they must be handled.
+    The detection logic (security_monitor.py) is added in Wave 2.
+
+Run:
+    python nexus_security_wave1_bootstrap.py
+"""
+
 from pathlib import Path
 import json
 
@@ -15,6 +32,15 @@ def log_failed(p, e): FAILED.append(f"{p} -> {e}")
 # SAFE WRITE
 # -----------------------------
 def write_file(path, content):
+    """Write text or dict content to path only if the file does not already exist.
+
+    Args:
+        path: Destination file path.
+        content: String or dict; dicts are serialised to JSON automatically.
+
+    Side effects:
+        Appends the path string to CREATED, SKIPPED, or FAILED lists.
+    """
     try:
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -32,6 +58,12 @@ def write_file(path, content):
 # WAVE 1 BUILDER
 # -----------------------------
 def build_wave1():
+    """Create all Wave 1 security governance artifacts.
+
+    Creates: threat model, security log schema, threat log file,
+    known attack patterns reference, and security system map.
+    All writes are idempotent — existing files are skipped.
+    """
 
     # 1. Threat Model
     write_file(
@@ -145,6 +177,7 @@ Mitigation: Immediate block
 # SUMMARY
 # -----------------------------
 def report():
+    """Print a summary of created, skipped, and failed files."""
     print("\\n=== WAVE 1 BUILD COMPLETE ===")
 
     print("\\nCREATED:")

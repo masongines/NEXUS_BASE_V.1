@@ -1,0 +1,7 @@
+# NEXUS Base V1 — Runtime Dependencies
+#
+# This project is intentionally pure Python standard library.
+# No third-party packages are required to run the system or the war test.
+#
+# Python version requirement: >=3.11
+# See pyproject.toml for project metadata.

@@ -1,5 +1,20 @@
-# bootstrap_runtime.py
-# Phase B: Controlled Runtime Layer Bootstrap (deterministic)
+"""
+NEXUS Base V1 — Phase B Runtime Bootstrap
+
+Purpose:
+    Bootstraps the controlled runtime layer for NEXUS Base V1.
+    Creates the directory structure, execution contract, tool registry,
+    approval gate, and executor in a deterministic, idempotent manner.
+
+Role in NEXUS flow:
+    This is the foundational bootstrap. Running it establishes the
+    core execution path (executor.py + approval_gate.py) and the
+    governance contract (execution_contract.md) that all subsequent
+    phases build on top of.
+
+Run:
+    python bootstrap_runtime.py
+"""
 
 import os
 import json
@@ -25,10 +40,17 @@ CONTRACT_MD = GOV_DIR / "execution_contract.md"
 LOG_FILE = LOG_DIR / "log.txt"
 
 def ensure_dirs():
+    """Create all required NEXUS directory branches if they do not exist."""
     for d in [EXEC_DIR, LOG_DIR, CFG_DIR, GOV_DIR]:
         d.mkdir(parents=True, exist_ok=True)
 
 def write_if_missing(path: Path, content: str):
+    """Write content to path only if the file does not already exist.
+
+    Args:
+        path: Destination file path.
+        content: Text content to write (UTF-8 encoded).
+    """
     if not path.exists():
         path.write_text(content, encoding="utf-8")
 
@@ -123,6 +145,12 @@ if __name__ == "__main__":
 '''
 
 def bootstrap():
+    """Run the full Phase B bootstrap sequence.
+
+    Creates all required directories, writes governance and config files
+    (skipping any that already exist), and initialises the execution log.
+    Safe to run multiple times — existing files are never overwritten.
+    """
     ensure_dirs()
     write_if_missing(CONTRACT_MD, EXECUTION_CONTRACT)
     write_if_missing(SCHEMA_JSON, json.dumps(ACTION_SCHEMA, indent=2))
@@ -135,6 +163,7 @@ def bootstrap():
     print("Bootstrap complete.")
 
 def run_test():
+    """Execute the NEXUS executor as a live smoke test after bootstrapping."""
     print("Running test...")
     subprocess.run([sys.executable, str(EXECUTOR_PY)])
 

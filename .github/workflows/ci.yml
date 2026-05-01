@@ -1,0 +1,48 @@
+name: NEXUS War Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  war-test:
+    name: Defensive War Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run NEXUS war test
+        run: python nexus_war_test.py
+
+      - name: Verify war test result
+        run: |
+          python -c "
+          import json, sys, pathlib
+          report_path = pathlib.Path('03_system_state/reports/war_test_report.json')
+          if not report_path.exists():
+              print('ERROR: war_test_report.json not found')
+              sys.exit(1)
+          report = json.loads(report_path.read_text())
+          summary = report.get('summary', report)
+          fails = summary.get('FAIL', 0)
+          warns = summary.get('WARN', 0)
+          passes = summary.get('PASS', 0)
+          print(f'Result: {passes} PASS / {warns} WARN / {fails} FAIL')
+          if fails > 0:
+              print('GATE FAILED: war test must have 0 FAIL to ship')
+              sys.exit(1)
+          print('Gate passed.')
+          "

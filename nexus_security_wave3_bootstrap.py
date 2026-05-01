@@ -1,3 +1,24 @@
+"""
+NEXUS Base V1 — Security Wave 3 Bootstrap
+
+Purpose:
+    Builds the trust layer for NEXUS Base V1.
+    Creates execution_trust_registry.json (defines trust levels and
+    auto-approval rules per action type) and trust_review.py (reads
+    execution + threat logs to surface trust promotion candidates).
+    Also patches executor.py to evaluate the trust registry before
+    routing to the human approval gate.
+
+Role in NEXUS flow:
+    Wave 3 completes the full NEXUS governance pipeline:
+    Action → Security → Trust → Approval → Execution → Logging.
+    Trusted actions at level T3 with auto_approved=True bypass the
+    human gate. All others still require human approval.
+
+Run:
+    python nexus_security_wave3_bootstrap.py
+"""
+
 from pathlib import Path
 import json
 
@@ -32,6 +53,11 @@ def write_file(path, content, is_json=False):
 # TRUST REGISTRY
 # -----------------------------
 def create_trust_registry():
+    """Write execution_trust_registry.json defining trust levels per action type.
+
+    The registry maps action_type strings to trust metadata (trust_level,
+    auto_approved). Level T3 with auto_approved=True bypasses the human gate.
+    """
     write_file(
         ROOT / "02_config/execution_trust_registry.json",
         {
@@ -47,6 +73,12 @@ def create_trust_registry():
 # TRUST REVIEW SCRIPT
 # -----------------------------
 def create_trust_review():
+    """Write trust_review.py, a log-analysis script for trust promotion decisions.
+
+    The script reads execution and threat logs to surface action types that
+    have accumulated enough clean executions to be candidates for trust-level
+    promotion. Output is advisory only — no automatic trust changes are made.
+    """
     write_file(
         ROOT / "01_core/control/trust_review.py",
         '''
@@ -96,6 +128,12 @@ if __name__ == "__main__":
 # EXECUTOR PATCH
 # -----------------------------
 def patch_executor():
+    """Inject the trust registry lookup into executor.py before the approval gate.
+
+    Adds trust-level evaluation so that T3/auto_approved actions bypass the
+    human gate. Idempotent: skipped if ``execution_trust_registry`` is already
+    present in the file.
+    """
     executor_path = ROOT / "01_core/execution/executor.py"
 
     try:
