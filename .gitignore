@@ -1,16 +1,32 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
 
+# Environments
 .env
 .venv/
 venv/
 
+# Editors
 .vscode/
 .vs_code/
+.idea/
 
+# Backup / draft files (do not commit work-in-progress copies)
+*.bak
 *.bak_*
+*.backup
+*.old
+*~
 
+# Build / package output
+build/
+dist/
+*.egg-info/
+
+# OS metadata
 .DS_Store
 Thumbs.db
