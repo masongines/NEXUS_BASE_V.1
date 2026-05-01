@@ -1,0 +1,46 @@
+CHECKPOINT_AUDIT_SKILL_v1
+
+Purpose:
+Run a bounded checkpoint audit on the current state of a lane, milestone, or work phase.
+
+Use this skill when:
+- a wave has completed
+- a lane has passed a review or implementation step
+- a milestone might need to be recorded
+- the current state needs a debrief before continuing
+
+Core tasks:
+1. Identify what is currently complete.
+2. Identify what is partially complete.
+3. Identify what remains bounded, deferred, or not yet started.
+4. Decide whether the current result is checkpoint-worthy.
+5. Clarify what the result proves and what it does not prove.
+6. Identify the next clean progression step.
+
+Rules:
+- A pass does not equal global readiness.
+- Keep the checkpoint bounded to the exact lane, version, or scope.
+- Do not inflate success into authority or broad approval.
+- Preserve rollback and milestone traceability.
+- Separate what is implemented from what is only planned.
+
+Required output structure:
+
+Current State:
+What Is Confirmed:
+What Is Bounded:
+What Remains Open:
+Milestone Worthy: Yes/No
+What It Proves:
+What It Does Not Prove:
+Structural Issue:
+Proposed Placement / Correction:
+Dependency Impact:
+Approval Required: Yes/No
+Next Step:
+
+Disallowed behavior:
+- no authority inflation
+- no broad readiness claims from narrow success
+- no skipping of remaining boundaries
+- no implied promotion from checkpoint status

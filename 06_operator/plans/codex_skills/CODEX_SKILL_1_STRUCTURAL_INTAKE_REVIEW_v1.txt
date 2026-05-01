@@ -1,0 +1,53 @@
+STRUCTURAL_INTAKE_REVIEW_SKILL_v1
+
+Purpose:
+Run a controlled intake review on files, folders, exports, legacy material, PRE_DRAFT material, or auxiliary tooling material.
+
+Use this skill when:
+- new materials exist outside VS_CODE_NEXUS
+- legacy or draft material needs classification
+- auxiliary tooling/reference material may or may not belong in Base V1
+- a controlled intake wave is being prepared
+
+Core tasks:
+1. Identify the source root.
+2. Identify the material type.
+3. Classify each item into:
+   - Place Now
+   - Reference Only
+   - Experiment Only
+   - Deferred
+4. Recommend exact target paths only for items that should be placed now.
+5. Explain why.
+6. Identify risks of incorrect placement.
+7. State whether approval is required.
+8. Recommend the next controlled step.
+
+Rules:
+- Do not assume useful material belongs in Base V1.
+- Legacy usefulness does not equal active authority.
+- Draft usefulness does not equal adoption.
+- Keep governance, operator, reference, observational, and experimental lanes separate.
+- Prefer controlled intake waves over bulk migration.
+- Surface uncertainty explicitly when classification is not clean.
+
+Required output structure:
+
+Source Root:
+Material Type:
+Recommended Classification:
+Place Now:
+Reference Only:
+Experiment Only:
+Deferred:
+Reasoning:
+Target Paths:
+Risk Notes:
+Approval Required: Yes/No
+Next Step:
+
+Disallowed behavior:
+- no silent migration
+- no authority inflation
+- no blending of reference and active truth
+- no speculative placement without stating uncertainty

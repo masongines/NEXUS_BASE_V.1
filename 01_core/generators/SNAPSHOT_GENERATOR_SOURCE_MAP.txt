@@ -1,0 +1,58 @@
+NEXUS Base V1 — Snapshot Generator Source Map
+
+Purpose:
+Pin the exact source basis for the first snapshot generator implementation target.
+
+Primary Sources:
+1. 00_governance_ref/active_standards/SNAPSHOT_GENERATOR_SPEC_v1.md
+   Use:
+   - generator behavior basis
+   - output role
+   - safeguards
+   - observational boundary guidance
+
+2. 00_governance_ref/doctrine/SYSTEM_STATE_SNAPSHOT_PROTOCOL.md
+   Use:
+   - snapshot purpose
+   - required structure
+   - source-precedence logic
+   - observational ceiling
+
+3. 00_governance_ref/support_records/DOCTRINE_IDENTITY_REGISTRY.md
+   Use:
+   - doctrine identity source
+   - canonical doctrine count basis
+
+4. 03_system_state/manifests/KERNEL_MANIFEST.json
+   Use:
+   - current inventory support input only
+   - not identity authority
+
+5. 03_system_state/context_exports/NEXUS_CONTEXT_EXPORT.md
+   Use:
+   - contextual support input only
+   - not governance authority
+
+6. 00_governance_ref/staged_reviews/SYSTEM_STATE_SNAPSHOT_CURRENT.md
+   or
+   03_system_state/snapshots/SYSTEM_STATE_SNAPSHOT_CURRENT.md
+   Use:
+   - structural support example only
+   - not authority source over doctrine/registry/standards
+
+Supporting Governance Lanes:
+7. 00_governance_ref/doctrine/
+8. 00_governance_ref/active_standards/
+9. 00_governance_ref/support_records/
+10. 00_governance_ref/staged_reviews/
+
+Target Output Lane:
+11. 03_system_state/snapshots/SYSTEM_STATE_SNAPSHOT_CURRENT.md
+
+Interpretation Rules:
+- doctrine identity comes from registry, not snapshot
+- manifest supports inventory visibility only
+- context export supports contextual visibility only
+- snapshot output remains observational only
+- no lower source may silently replace a stronger source
+- uncertainty must remain visible if source posture is partial or mixed

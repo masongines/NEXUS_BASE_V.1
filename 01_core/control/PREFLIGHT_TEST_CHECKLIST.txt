@@ -1,0 +1,51 @@
+NEXUS Base V1 — Preflight Test Checklist
+
+Purpose:
+Define the first-pass verification checklist before and after the first control implementation draft.
+
+A. Structural Readiness
+[ ] 01_core/control exists
+[ ] README_CONTROL.txt exists
+[ ] README_PREFLIGHT_SCOPE.txt exists
+[ ] PREFLIGHT_SOURCE_MAP.txt exists
+[ ] PREFLIGHT_TEST_CHECKLIST.txt exists
+
+B. Source Presence Readiness
+[ ] DOCTRINE_IDENTITY_REGISTRY.md present
+[ ] PRIME_AXIOM.md present
+[ ] ESCALATION_TIERING_PROTOCOL.md present
+[ ] FACTUAL_VALIDATION_PROTOCOL.md present
+[ ] ENTROPY_MONITORING_SYSTEM.md present
+[ ] SYSTEM_STATE_SNAPSHOT_PROTOCOL.md present
+[ ] GOVERNANCE_KERNEL_GUARDIAN.md present
+[ ] GUARDIAN_AUTOMATION_SPEC_v1.md present
+[ ] NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md present
+[ ] KERNEL_MANIFEST.json present
+
+C. Doctrine Presence Verification
+[ ] all canonical doctrine files listed in registry are present in 00_governance_ref/doctrine
+
+D. Output Boundary Checks
+[ ] output classes limited to PASS / WATCHLIST / INTERVENTION REQUIRED
+[ ] no approval language
+[ ] no mutation behavior
+[ ] no runtime invocation
+[ ] no migration action
+
+E. First-Pass Functional Checks
+[ ] registry presence check works
+[ ] doctrine presence check works
+[ ] manifest presence check works
+[ ] manifest parse check works
+[ ] registry vs manifest coherence support check works
+[ ] entropy source presence check works
+[ ] snapshot protocol presence check works
+
+F. Failure Handling
+[ ] missing source produces bounded failure result
+[ ] malformed manifest produces bounded failure result
+[ ] no failure path mutates files
+[ ] no failure path escalates automatically
+
+G. Gate Condition
+[ ] operator approves first code draft only after this checklist is accepted

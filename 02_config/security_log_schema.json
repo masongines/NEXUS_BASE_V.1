@@ -1,0 +1,7 @@
+{
+  "timestamp": "string",
+  "input": "string",
+  "threat_level": "T1 | T2 | T3",
+  "action_taken": "log | quarantine | block",
+  "requires_operator_review": true
+}

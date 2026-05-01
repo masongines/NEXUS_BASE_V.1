@@ -1,0 +1,143 @@
+# bootstrap_runtime.py
+# Phase B: Controlled Runtime Layer Bootstrap (deterministic)
+
+import os
+import json
+import uuid
+from datetime import datetime
+from pathlib import Path
+import subprocess
+import sys
+
+ROOT = Path(".").resolve()
+
+# ---- PATHS ----
+EXEC_DIR = ROOT / "01_core" / "execution"
+LOG_DIR = ROOT / "04_logs" / "execution"
+CFG_DIR = ROOT / "02_config"
+GOV_DIR = ROOT / "00_governance_ref"
+
+EXECUTOR_PY = EXEC_DIR / "executor.py"
+APPROVAL_PY = EXEC_DIR / "approval_gate.py"
+TOOLS_JSON = EXEC_DIR / "tool_registry.json"
+SCHEMA_JSON = CFG_DIR / "action_schema.json"
+CONTRACT_MD = GOV_DIR / "execution_contract.md"
+LOG_FILE = LOG_DIR / "log.txt"
+
+def ensure_dirs():
+    for d in [EXEC_DIR, LOG_DIR, CFG_DIR, GOV_DIR]:
+        d.mkdir(parents=True, exist_ok=True)
+
+def write_if_missing(path: Path, content: str):
+    if not path.exists():
+        path.write_text(content, encoding="utf-8")
+
+# ---- FILE CONTENTS ----
+EXECUTION_CONTRACT = """# EXECUTION CONTRACT — BASE V1
+
+## Rules
+1. No action executes without operator approval.
+2. Only allowlisted tools may execute.
+3. All executions must be logged (append-only).
+4. Outputs are observational (non-authoritative).
+5. No retries without operator approval.
+"""
+
+ACTION_SCHEMA = {
+    "action_id": "string",
+    "timestamp": "string",
+    "source": "system | aegis | operator",
+    "action_type": "string",
+    "payload": {},
+    "requires_approval": True,
+    "status": "proposed | approved | denied | executed | failed"
+}
+
+TOOL_REGISTRY = {
+    "tools": [
+        {"name": "echo", "allowed": True}
+    ]
+}
+
+APPROVAL_GATE = '''
+import json
+def request_approval(action):
+    print("\\n=== APPROVAL REQUIRED ===")
+    print(json.dumps(action, indent=2))
+    return input("Approve action? (y/n): ").lower() == "y"
+'''
+
+EXECUTOR_CODE = '''
+import json, uuid
+from datetime import datetime
+from pathlib import Path
+from approval_gate import request_approval
+
+BASE = Path(__file__).resolve().parents[2]
+LOG = BASE / "04_logs/execution/log.txt"
+TOOLS = Path(__file__).parent / "tool_registry.json"
+
+def load_tools():
+    return json.load(open(TOOLS))["tools"]
+
+def allowed(name, tools):
+    return any(t["name"] == name and t["allowed"] for t in tools)
+
+def log(entry):
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    with open(LOG, "a") as f:
+        f.write(json.dumps(entry) + "\\n")
+
+def run():
+    tools = load_tools()
+
+    action = {
+        "action_id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().isoformat(),
+        "source": "operator",
+        "action_type": "echo",
+        "payload": {"message": "test run"},
+        "requires_approval": True,
+        "status": "proposed"
+    }
+
+    if not allowed(action["action_type"], tools):
+        action["status"] = "failed"
+        log(action)
+        return print("Tool not allowed")
+
+    if not request_approval(action):
+        action["status"] = "denied"
+        log(action)
+        return print("Denied")
+
+    action["status"] = "approved"
+    action["result"] = action["payload"]
+    action["status"] = "executed"
+
+    log(action)
+    print("\\nResult:", action["result"])
+
+if __name__ == "__main__":
+    run()
+'''
+
+def bootstrap():
+    ensure_dirs()
+    write_if_missing(CONTRACT_MD, EXECUTION_CONTRACT)
+    write_if_missing(SCHEMA_JSON, json.dumps(ACTION_SCHEMA, indent=2))
+    write_if_missing(TOOLS_JSON, json.dumps(TOOL_REGISTRY, indent=2))
+    write_if_missing(APPROVAL_PY, APPROVAL_GATE)
+    write_if_missing(EXECUTOR_PY, EXECUTOR_CODE)
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    if not LOG_FILE.exists():
+        LOG_FILE.touch()
+    print("Bootstrap complete.")
+
+def run_test():
+    print("Running test...")
+    subprocess.run([sys.executable, str(EXECUTOR_PY)])
+
+if __name__ == "__main__":
+    bootstrap()
+    run_test()

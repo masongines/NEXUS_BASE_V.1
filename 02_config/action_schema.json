@@ -1,0 +1,9 @@
+{
+  "action_id": "string",
+  "timestamp": "string",
+  "source": "system | aegis | operator",
+  "action_type": "string",
+  "payload": {},
+  "requires_approval": true,
+  "status": "proposed | approved | denied | executed | failed"
+}

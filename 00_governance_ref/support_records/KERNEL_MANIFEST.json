@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "artifact_kind": "generated_inventory",
+  "kernel_name": "NEXUS Governance Kernel",
+  "kernel_version": "1.2",
+  "generated_at": "2026-03-19T06:31:20-05:00",
+  "inventory_basis": {
+    "doctrine_identity_source": "DOCTRINE_IDENTITY_REGISTRY.md",
+    "artifact_scan_root": "governance_kernel/",
+    "count_policy": "generated_only",
+    "classification_policy": "header_and_registry_derived"
+  },
+  "counts": {
+    "canonical_doctrine_count": 12,
+    "kernel_artifact_count": 23,
+    "active_standard_count": 8,
+    "stabilized_standard_count": 0,
+    "doctrine_candidate_count": 0,
+    "non_doctrinal_kernel_artifact_count": 11
+  },
+  "doctrine_files": [
+    "PRIME_AXIOM.md",
+    "MASTER_ARCHITECTURE.md",
+    "SOURCE_ACCESS_PROTOCOL.md",
+    "ESCALATION_TIERING_PROTOCOL.md",
+    "DOCTRINE_PROMOTION_PROTOCOL.md",
+    "FACTUAL_VALIDATION_PROTOCOL.md",
+    "ENTROPY_MONITORING_SYSTEM.md",
+    "SYSTEM_STATE_SNAPSHOT_PROTOCOL.md",
+    "PARTNERSHIP_EXECUTION_STANDARD.md",
+    "RESPONSE_FORMAT_STANDARD.md",
+    "CONSOLIDATION_LOG.md",
+    "TERMINOLOGY_INDEX.md"
+  ],
+  "non_doctrinal_kernel_artifacts": [
+    {
+      "file": "DECISION_REGISTER_v1.md",
+      "classification": "Active Standard",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "DOCTRINE_IDENTITY_REGISTRY.md",
+      "classification": "Kernel Support Record",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "GOVERNANCE_KERNEL_GUARDIAN.md",
+      "classification": "Kernel Support Record",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "GOVERNED_AGENT_LAYER_v1.md",
+      "classification": "Active Standard",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "GUARDIAN_AUTOMATION_SPEC_v1.md",
+      "classification": "Active Standard",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "MANIFEST_GENERATOR_SPEC_v1.md",
+      "classification": "Active Standard",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "META_CONTROL_CENTER.md",
+      "classification": "Kernel Support Record",
+      "status": "ACTIVE",
+      "owning_layer": "Meta Control Center / Governance Kernel"
+    },
+    {
+      "file": "NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md",
+      "classification": "Active Standard",
+      "status": "Active Working Use",
+      "owning_layer": "Governance Kernel",
+      "promotion_status": "Not doctrine"
+    },
+    {
+      "file": "NEXUS_OPERATOR_ENGAGEMENT_MODEL_v2.md",
+      "classification": "Active Standard",
+      "status": "Active Working Use",
+      "owning_layer": "Governance Kernel",
+      "promotion_status": "Not doctrine"
+    },
+    {
+      "file": "NEXUS_SECURITY_AND_INCIDENT_RESPONSE_v1.md",
+      "classification": "Active Standard",
+      "status": "Active Working Use",
+      "owning_layer": "Governance Kernel"
+    },
+    {
+      "file": "SNAPSHOT_GENERATOR_SPEC_v1.md",
+      "classification": "Active Standard",
+      "status": "ACTIVE",
+      "owning_layer": "Governance Kernel"
+    }
+  ],
+  "warnings": [
+    "This manifest is generated inventory and is not the source of canonical doctrine identity.",
+    "Canonical doctrine identity is governed exclusively by DOCTRINE_IDENTITY_REGISTRY.md.",
+    "Non-doctrinal kernel artifacts may appear here without being doctrine.",
+    "Counts must not be manually edited."
+  ]
+}

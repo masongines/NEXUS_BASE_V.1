@@ -1,0 +1,62 @@
+NEXUS Base V1 — Context Export Generator Source Map
+
+Purpose:
+Pin the exact source basis for the first context export generator implementation target.
+
+Primary Sources:
+1. 00_governance_ref/support_records/DOCTRINE_IDENTITY_REGISTRY.md
+   Use:
+   - doctrine identity source
+   - canonical doctrine basis
+
+2. 03_system_state/manifests/KERNEL_MANIFEST.json
+   Use:
+   - current inventory support
+   - doctrine / active standard / support record counts support
+   - not doctrine identity authority
+
+3. 03_system_state/snapshots/SYSTEM_STATE_SNAPSHOT_CURRENT.md
+   Use:
+   - current observational support
+   - current-state support only
+   - not governance authority
+
+4. 06_operator/plans/NEXUS_BASE_V1_FILE_PLACEMENT_AND_ROLE_MAP_v2.md
+   Use:
+   - structural placement logic
+   - lane interpretation support
+
+5. 06_operator/plans/NEXUS_BASE_V1_MIGRATION_REGISTER_v2.md
+   Use:
+   - current migration/planning support
+   - implementation-state support
+
+6. 06_operator/checkpoints/NEXUS_BASE_V1_FOUNDATION_COMPLETION_WORKBOARD_v2.md
+   Use:
+   - stage and milestone support
+   - bounded current-phase orientation
+
+Secondary Support Sources:
+7. current checkpoint artifacts in 06_operator/checkpoints
+   Use:
+   - currently active milestone support only
+   - not stronger than governance or operator planning surfaces
+
+8. current auxiliary policy/process artifacts only if explicitly referenced
+   Use:
+   - support context only
+   - not governance truth
+   - not readiness authority
+
+Target Output Lane:
+9. 03_system_state/context_exports/NEXUS_CONTEXT_EXPORT.md
+
+Interpretation Rules:
+- doctrine identity comes from registry, not context export
+- manifest supports inventory visibility only
+- snapshot supports current-state visibility only
+- operator plans and checkpoints may support orientation but do not become merged authority
+- context export remains weaker than doctrine, active standards, support records, and operator-controlled decision surfaces
+- lower surfaces may not silently replace stronger sources
+- the output must remain explicitly observational and orientation-oriented
+- no PRE_DRAFT or LEGACY material is used unless separately approved

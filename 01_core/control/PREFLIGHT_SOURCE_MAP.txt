@@ -1,0 +1,72 @@
+NEXUS Base V1 — Preflight Source Map
+
+Purpose:
+Pin the exact source basis for the first control/preflight implementation.
+
+Primary Sources:
+1. 00_governance_ref/support_records/DOCTRINE_IDENTITY_REGISTRY.md
+   Use:
+   - canonical doctrine identity
+   - required doctrine filename list
+   - collision logic basis
+
+2. 00_governance_ref/doctrine/PRIME_AXIOM.md
+   Use:
+   - authority root
+   - no AI self-governance
+   - no autonomous truth elevation
+
+3. 00_governance_ref/doctrine/ESCALATION_TIERING_PROTOCOL.md
+   Use:
+   - escalation awareness
+   - no silent tier skipping
+
+4. 00_governance_ref/doctrine/FACTUAL_VALIDATION_PROTOCOL.md
+   Use:
+   - validation posture
+   - no structural action from validation alone
+
+5. 00_governance_ref/doctrine/ENTROPY_MONITORING_SYSTEM.md
+   Use:
+   - entropy scan basis
+   - threshold interpretation
+
+6. 00_governance_ref/doctrine/SYSTEM_STATE_SNAPSHOT_PROTOCOL.md
+   Use:
+   - snapshot trigger logic
+   - observational ceiling
+
+7. 00_governance_ref/support_records/GOVERNANCE_KERNEL_GUARDIAN.md
+   Use:
+   - Guardian check sequence
+   - analytical-only posture
+   - output format expectations
+
+8. 00_governance_ref/active_standards/GUARDIAN_AUTOMATION_SPEC_v1.md
+   Use:
+   - check list
+   - no-modification rule
+   - no-approval rule
+
+9. 00_governance_ref/active_standards/NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md
+   Use:
+   - no self-elevation rule
+   - lower-surface containment
+   - no authority drift
+
+10. 00_governance_ref/support_records/KERNEL_MANIFEST.json
+    Use:
+    - inventory support only
+    - manifest coherence support
+    - not canonical doctrine identity source
+
+Secondary Context Sources:
+11. 03_system_state/manifests/KERNEL_MANIFEST.json
+12. 03_system_state/snapshots/SYSTEM_STATE_SNAPSHOT_CURRENT.md
+13. 03_system_state/context_exports/NEXUS_CONTEXT_EXPORT.md
+
+Interpretation Rule:
+- doctrine identity comes from registry, not manifest
+- manifest supports coherence checks only
+- system-state outputs remain observational only
+- no lower surface may replace registry or doctrine

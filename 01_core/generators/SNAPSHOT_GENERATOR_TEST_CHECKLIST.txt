@@ -1,0 +1,46 @@
+NEXUS Base V1 — Snapshot Generator Test Checklist
+
+Purpose:
+Define the first-pass verification checklist before and after the first snapshot generator code draft.
+
+A. Structural Readiness
+[ ] 01_core/generators exists
+[ ] README_GENERATORS.txt exists
+[ ] README_SNAPSHOT_GENERATOR_SCOPE.txt exists
+[ ] SNAPSHOT_GENERATOR_SOURCE_MAP.txt exists
+[ ] SNAPSHOT_GENERATOR_TEST_CHECKLIST.txt exists
+[ ] 03_system_state/snapshots exists
+
+B. Source Presence Readiness
+[ ] SNAPSHOT_GENERATOR_SPEC_v1.md present
+[ ] SYSTEM_STATE_SNAPSHOT_PROTOCOL.md present
+[ ] DOCTRINE_IDENTITY_REGISTRY.md present
+[ ] KERNEL_MANIFEST.json present
+[ ] NEXUS_CONTEXT_EXPORT.md present if used in first scope
+[ ] current snapshot support example present
+[ ] required governance folders present
+
+C. Boundary Readiness
+[ ] snapshot output explicitly observational
+[ ] no approval language
+[ ] no mutation behavior
+[ ] no trigger execution behavior
+[ ] uncertainty handling remains visible
+[ ] lower sources do not outrank stronger sources
+
+D. First-Pass Functional Checks
+[ ] doctrine inventory section can be assembled
+[ ] current counts section can be assembled from approved support sources
+[ ] source posture can be signaled per section
+[ ] uncertainty notes can be included when needed
+[ ] output can be written to approved snapshot path
+[ ] output remains structurally readable and stable
+
+E. Failure Handling
+[ ] missing required source causes bounded failure
+[ ] partial support input degrades output rather than inflating certainty
+[ ] no failure path mutates files
+[ ] no failure path expands into context export or broader reporting behavior
+
+F. Gate Condition
+[ ] operator approves first code draft only after this checklist is accepted

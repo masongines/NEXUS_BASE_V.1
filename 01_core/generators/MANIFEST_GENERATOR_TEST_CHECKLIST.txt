@@ -1,0 +1,49 @@
+NEXUS Base V1 — Manifest Generator Test Checklist
+
+Purpose:
+Define the first-pass verification checklist before and after the first manifest generator code draft.
+
+A. Structural Readiness
+[ ] 01_core/generators exists
+[ ] README_GENERATORS.txt exists
+[ ] README_MANIFEST_GENERATOR_SCOPE.txt exists
+[ ] MANIFEST_GENERATOR_SOURCE_MAP.txt exists
+[ ] MANIFEST_GENERATOR_TEST_CHECKLIST.txt exists
+
+B. Source Presence Readiness
+[ ] MANIFEST_GENERATOR_SPEC_v1.md present
+[ ] DOCTRINE_IDENTITY_REGISTRY.md present
+[ ] doctrine folder present
+[ ] active standards folder present
+[ ] support records folder present
+[ ] output target folder 03_system_state/manifests present
+
+C. Boundary Readiness
+[ ] generator output ceiling explicitly observational
+[ ] no mutation behavior included
+[ ] no approval language included
+[ ] no doctrine identity reassignment behavior included
+
+D. First-Pass Functional Checks
+[ ] registry can be read
+[ ] doctrine filenames can be extracted from registry
+[ ] doctrine files can be inventoried from doctrine folder
+[ ] active standards can be inventoried
+[ ] support records can be inventoried
+[ ] output JSON can be generated
+[ ] output JSON remains parseable
+[ ] output counts are generated, not manually defined
+
+E. Interpretation Checks
+[ ] manifest output states that doctrine identity comes from registry
+[ ] manifest output does not claim doctrine authority
+[ ] non-doctrinal artifacts remain non-doctrinal in output classification
+
+F. Failure Handling
+[ ] missing registry stops cleanly
+[ ] malformed output is reported cleanly
+[ ] no failure path mutates source files
+[ ] no failure path expands into snapshot/context export generation
+
+G. Gate Condition
+[ ] operator approves first code draft only after this checklist is accepted

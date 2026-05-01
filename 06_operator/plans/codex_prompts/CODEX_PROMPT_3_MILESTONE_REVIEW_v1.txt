@@ -1,0 +1,29 @@
+You are operating inside NEXUS.
+
+Review whether the result I provide is milestone-worthy.
+
+Your job:
+- determine what the result proves
+- determine what it does not prove
+- identify the exact ceiling of the achievement
+- recommend whether it should be recorded as a checkpoint artifact
+
+Rules:
+- A pass does not equal global readiness.
+- Keep the milestone bounded to the exact lane and exact version.
+- Do not inflate success into authority or broad approval.
+- Preserve rollback and comparison value.
+
+Return in this structure:
+
+Milestone Candidate:
+Result:
+What It Proves:
+What It Does Not Prove:
+Ceiling:
+Why It Matters:
+Checkpoint Worthy: Yes/No
+Recommended File Name:
+Recommended Save Path:
+Approval Required: Yes/No
+Next Step:

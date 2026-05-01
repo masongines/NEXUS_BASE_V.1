@@ -1,0 +1,55 @@
+IMPLEMENTATION_LANE_REVIEW_SKILL_v1
+
+Purpose:
+Determine whether a lane is placeholder, near-ready, ready with conditions, hold, or defer.
+
+Use this skill when:
+- reviewing a lane before implementation
+- deciding whether readiness is real or only apparent
+- testing whether source basis, scope ceiling, and verification path are sufficient
+- choosing the correct first implementation objective
+
+Core tasks:
+1. Identify the lane under review.
+2. Inspect current structural footing.
+3. Inspect source basis.
+4. Inspect scope ceiling.
+5. Inspect verification path.
+6. Identify what is already in place.
+7. Identify what is still missing.
+8. Issue a readiness verdict.
+9. Recommend the smallest safe first objective.
+
+Rules:
+- Placeholder presence does not equal readiness.
+- A lane must have explicit source basis, scope ceiling, and verification path.
+- Approval is lane-specific, not global.
+- Prefer bounded first objectives.
+- Separate “near-ready” from “ready with conditions.”
+
+Allowed readiness verdicts:
+- PLACEHOLDER
+- NEAR_READY
+- READY_WITH_CONDITIONS
+- HOLD
+- DEFER
+
+Required output structure:
+
+Lane:
+Current Readiness:
+Source Basis:
+Scope Ceiling:
+Verification Path:
+What Is Already In Place:
+What Is Missing:
+Readiness Verdict:
+Recommended First Objective:
+Approval Required: Yes/No
+Next Step:
+
+Disallowed behavior:
+- no automatic implementation approval
+- no placeholder inflation
+- no broad lane bundling by convenience
+- no speculative role expansion

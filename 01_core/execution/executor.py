@@ -1,0 +1,141 @@
+import json
+import uuid
+from datetime import datetime, UTC
+from pathlib import Path
+
+# -----------------------------
+# IMPORTS
+# -----------------------------
+from approval_gate import request_approval
+from security.security_monitor import detect_threat
+from security.quarantine_handler import quarantine
+
+# -----------------------------
+# PATHS
+# -----------------------------
+BASE = Path(__file__).resolve().parents[2]
+LOG_PATH = BASE / "04_logs/execution/log.txt"
+TOOL_REGISTRY_PATH = Path(__file__).resolve().parent / "tool_registry.json"
+TRUST_PATH = BASE / "02_config/execution_trust_registry.json"
+
+# -----------------------------
+# LOADERS
+# -----------------------------
+def load_tools():
+    return json.load(open(TOOL_REGISTRY_PATH))
+
+def load_trust():
+    if not TRUST_PATH.exists():
+        return {}
+    return json.load(open(TRUST_PATH))
+
+# -----------------------------
+# VALIDATION
+# -----------------------------
+def is_tool_allowed(tool_name, tools):
+    for tool in tools["tools"]:
+        if tool["name"] == tool_name and tool["allowed"]:
+            return True
+    return False
+
+# -----------------------------
+# LOGGING
+# -----------------------------
+def log_action(entry):
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(LOG_PATH, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+
+# -----------------------------
+# TOOL EXECUTION
+# -----------------------------
+def execute_echo(payload):
+    return payload
+
+def execute_action(action_type, payload):
+    if action_type == "echo":
+        return execute_echo(payload)
+    raise Exception("Unknown tool")
+
+# -----------------------------
+# MAIN
+# -----------------------------
+def run():
+
+    tools = load_tools()
+    trust_registry = load_trust()
+
+    # -----------------------------
+    # ACTION
+    # -----------------------------
+    action = {
+        "action_id": str(uuid.uuid4()),
+        "timestamp": datetime.now(UTC).isoformat(),
+        "source": "operator",
+        "action_type": "echo",
+        "payload": {"message": "test run"},
+        "requires_approval": True,
+        "status": "proposed"
+    }
+
+    # -----------------------------
+    # SECURITY CHECK
+    # -----------------------------
+    threat_info = detect_threat(action)
+
+    if threat_info.get("threat"):
+        quarantine(action, threat_info)
+        return
+
+    # -----------------------------
+    # TOOL CHECK
+    # -----------------------------
+    if not is_tool_allowed(action["action_type"], tools):
+        action["status"] = "failed"
+        action["error"] = "tool_not_allowed"
+        log_action(action)
+        print("Tool not allowed")
+        return
+
+    # -----------------------------
+    # TRUST CHECK
+    # -----------------------------
+    tool_trust = trust_registry.get(action["action_type"], {})
+    trust_level = tool_trust.get("trust_level", "T0")
+    auto_approved = tool_trust.get("auto_approved", False)
+
+    if trust_level == "T3" and auto_approved:
+        print("\nTRUSTED AUTO-APPROVAL (T3)")
+        approved = True
+    else:
+        approved = request_approval(action)
+
+    if not approved:
+        action["status"] = "denied"
+        log_action(action)
+        print("Action denied")
+        return
+
+    # -----------------------------
+    # EXECUTION
+    # -----------------------------
+    action["status"] = "approved"
+
+    try:
+        result = execute_action(action["action_type"], action["payload"])
+        action["status"] = "executed"
+        action["result"] = result
+    except Exception as e:
+        action["status"] = "failed"
+        action["error"] = str(e)
+
+    log_action(action)
+
+    print("\nExecution result:")
+    print(action.get("result", "FAILED"))
+
+# -----------------------------
+# ENTRY
+# -----------------------------
+if __name__ == "__main__":
+    run()

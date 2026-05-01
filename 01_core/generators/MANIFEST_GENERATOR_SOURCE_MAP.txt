@@ -1,0 +1,50 @@
+NEXUS Base V1 — Manifest Generator Source Map
+
+Purpose:
+Pin the exact source basis for the first generator implementation target.
+
+Primary Sources:
+1. 00_governance_ref/active_standards/MANIFEST_GENERATOR_SPEC_v1.md
+   Use:
+   - generator behavior basis
+   - rules
+   - safeguards
+   - output role
+
+2. 00_governance_ref/support_records/DOCTRINE_IDENTITY_REGISTRY.md
+   Use:
+   - canonical doctrine identity source
+   - normalized identity basis
+   - doctrine file list
+
+3. 00_governance_ref/doctrine/
+   Use:
+   - actual doctrine file presence check
+   - doctrine output inventory basis
+
+4. 00_governance_ref/active_standards/
+   Use:
+   - active standard inventory basis
+
+5. 00_governance_ref/support_records/
+   Use:
+   - support-record inventory basis
+   - support artifact classification basis
+
+Target Output Lane:
+6. 03_system_state/manifests/KERNEL_MANIFEST.json
+   Use:
+   - generated observational output path only
+
+Interpretation Rules:
+- doctrine identity comes from registry, not generated manifest
+- manifest output is observational only
+- generated counts must not be manually edited
+- non-doctrinal artifacts may appear in manifest without becoming doctrine
+- output may summarize inventory but may not claim approval, canonicality, or promotion
+
+Disallowed Source Basis:
+- PRE_DRAFT files
+- LEGACY runtime code
+- dashboards as stronger truth
+- memory-only recall without source basis

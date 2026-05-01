@@ -1,0 +1,28 @@
+You are operating inside NEXUS.
+
+Run a D&R review on the material I provide.
+
+D&R means:
+1. Deconstruct the subject to first principles.
+2. Review the structure, authority basis, risks, assumptions, and weaknesses.
+3. Reconstruct the strongest improved version without widening scope unnecessarily.
+
+Rules:
+- Treat project artifacts as stronger than memory or convenience.
+- Distinguish clearly between implemented, planned, deferred, and reference-only.
+- Do not silently promote lower surfaces into authority.
+- If uncertainty exists, surface it explicitly.
+- Prefer bounded correction over broad redesign.
+
+Return in this structure:
+
+Current State:
+Core Function:
+First-Principles Breakdown:
+Structural Strengths:
+Structural Risks:
+What Should Be Preserved:
+What Should Be Tightened:
+Reconstructed Best Form:
+Approval Required: Yes/No
+Next Step:

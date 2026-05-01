@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-05-01T00:38:19.391352+00:00",
+  "system": "NEXUS Base V1",
+  "test_type": "Defensive Sandbox War Test",
+  "verdict": "PASS",
+  "summary": {
+    "PASS": 21,
+    "FAIL": 0,
+    "WARN": 0
+  },
+  "results": [
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\executor.py",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\security_monitor.py",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\quarantine_handler.py",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\02_config\\execution_trust_registry.json",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\security\\threat_log.txt",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\execution\\log.txt",
+      "status": "PASS",
+      "details": "present"
+    },
+    {
+      "test": "safe_action_not_flagged",
+      "status": "PASS",
+      "details": "{'threat': False}"
+    },
+    {
+      "test": "attack_detected::prompt_injection_basic",
+      "status": "PASS",
+      "details": "{'threat': True, 'level': 'T2', 'reason': 'ignore previous instructions'}"
+    },
+    {
+      "test": "attack_detected::data_exfiltration_request",
+      "status": "PASS",
+      "details": "{'threat': True, 'level': 'T2', 'reason': 'send system data'}"
+    },
+    {
+      "test": "attack_detected::secret_reveal_request",
+      "status": "PASS",
+      "details": "{'threat': True, 'level': 'T2', 'reason': 'reveal secrets'}"
+    },
+    {
+      "test": "attack_detected::bypass_attempt",
+      "status": "PASS",
+      "details": "{'threat': True, 'level': 'T2', 'reason': 'bypass'}"
+    },
+    {
+      "test": "attack_detected::exfiltration_keyword",
+      "status": "PASS",
+      "details": "{'threat': True, 'level': 'T2', 'reason': 'exfiltrate'}"
+    },
+    {
+      "test": "quarantine_appends_threat_log",
+      "status": "PASS",
+      "details": "before=2, after=3"
+    },
+    {
+      "test": "trust_registry_valid_json",
+      "status": "PASS",
+      "details": "valid JSON"
+    },
+    {
+      "test": "trust_level_valid",
+      "status": "PASS",
+      "details": "T3"
+    },
+    {
+      "test": "auto_approved_boolean",
+      "status": "PASS",
+      "details": "True"
+    },
+    {
+      "test": "executor_has_security_hook",
+      "status": "PASS",
+      "details": "detect_threat/quarantine found"
+    },
+    {
+      "test": "executor_has_trust_hook",
+      "status": "PASS",
+      "details": "trust registry logic found"
+    },
+    {
+      "test": "security_before_trust",
+      "status": "PASS",
+      "details": "security_pos=240, trust_pos=543"
+    },
+    {
+      "test": "datetime_utcnow_deprecated",
+      "status": "PASS",
+      "details": "no datetime.utcnow() found"
+    },
+    {
+      "test": "windows_encoding_emoji_risk",
+      "status": "PASS",
+      "details": "no known risky emoji found in scanned files"
+    }
+  ]
+}

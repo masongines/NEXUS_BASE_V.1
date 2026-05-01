@@ -1,0 +1,322 @@
+NEXUS_SUXEN — Draft Base V1 Audit
+Bootstrap Handoff for Further Analysis
+Scope: First 4 rewritten draft files only
+[A] Review Boundary
+
+These 4 files are being treated as a separate Draft Base V1 set, not as live canonical replacements yet. That is the correct posture. The glossary draft is a non-doctrinal support/reference artifact, while the other three are updated control/protocol files under review.
+
+Required read order used in this review
+SYSTEM_STATE_SNAPSHOT_PROTOCOL.md v4 draft
+SNAPSHOT_GENERATOR_SPEC_v2 draft
+TERMINOLOGY_INDEX.md draft updated canonical control file
+NEXUS_GLOSSARY_AND_INDEX draft extended encyclopedia
+
+That order is correct because it goes from observability law → observability implementation standard → canonical terminology control → extended explanatory reference.
+
+[B] High-Level Verdict
+Main judgment
+
+These four draft files are a real improvement over the earlier state. The draft snapshot protocol and generator spec directly address the exact drift problems we identified earlier: stale interface-derived state, hidden source merging, unlabeled uncertainty, and silent conflict collapse.
+
+Bottom-line result
+Direction = correct
+Authority containment = improved
+Observability truth-safety = significantly improved
+Main remaining risk = terminology control boundary and implementation alignment
+[C] Do Not Confuse These Two Files
+[1] Canonical Control File
+
+TERMINOLOGY_INDEX.md is the canonical terminology control file. It defines official system terms, observability terms, status labels, uncertainty reasons, and the update/prohibition rules.
+
+[2] Extended Encyclopedia / Support Layer
+
+NEXUS_GLOSSARY_AND_INDEX is the extended explanatory glossary. It explicitly says it does not replace canonical doctrine or the canonical terminology authority file, and that TERMINOLOGY_INDEX.md wins on conflict.
+
+Correct relationship
+TERMINOLOGY_INDEX = canonical control
+NEXUS_GLOSSARY_AND_INDEX = extended support encyclopedia
+
+That distinction is strong and should be preserved.
+
+[D] File-by-File Audit
+1) SYSTEM_STATE_SNAPSHOT_PROTOCOL.md v4
+
+Source type: reference
+Affected layer: governance / observability
+Uncertainty: low
+
+Audit result
+
+This is a major upgrade over the earlier snapshot protocol. It now explicitly defines the snapshot as a provenance-explicit, conflict-aware, observational state artifact, and it forbids turning inference or interface state into authority. It also requires visible source distinctions, conflict visibility, uncertainty reasons, and a source exclusion register.
+
+Key strengths
+observational-only boundary is explicit
+conflict must remain visible
+stale or excluded sources must be declared
+lab state is treated as conflict-sensitive rather than silently trusted
+unknown fields require explicit reason codes, not just UNKNOWN labels
+Key issue
+
+The draft is strong, but it is stricter than the older generator/output chain. That means the runtime implementation must be upgraded to match it, or the protocol will outrun the code. The old snapshot generator and snapshot output still reflect the weaker earlier model.
+
+Disposition
+
+Draft-side core doctrine candidate — strong
+
+2) SNAPSHOT_GENERATOR_SPEC_v2
+
+Source type: reference
+Affected layer: governance / observability / runtime interface
+Uncertainty: low
+
+Audit result
+
+This is the correct evolution of the generator spec. It now requires:
+
+source precedence,
+stale/conflict labeling,
+uncertainty reasons,
+excluded-source recording,
+provenance headers,
+allowed status labels only,
+visible failure behavior.
+Key strengths
+
+It directly addresses the exact failures we observed in the older generator path:
+
+no silent source merging,
+no silent overwrite,
+no “clean” status if downgrade conditions exist,
+interface-derived state is lowest precedence.
+Key issue
+
+This draft will only become effective when the runtime generator is rewritten to obey it. The older implementation still parsed dashboard/control-surface content for lab state, which is precisely what this new spec is trying to stop.
+
+Disposition
+
+Draft-side active standard candidate — very strong
+
+3) TERMINOLOGY_INDEX.md draft updated canonical control file
+
+Source type: reference
+Affected layer: governance / terminology / observability
+Uncertainty: medium
+
+Audit result
+
+This draft is stronger than the earlier version because it expands the canonical term set into observability-safe language:
+
+provenance header,
+composite display,
+source exclusion register,
+uncertainty register,
+status labels,
+uncertainty reasons.
+Key strengths
+
+It addresses one of the core historical drift problems: language itself was not tightly bounded enough around interface, status, and uncertainty handling. This draft directly fixes that.
+
+Key issue [Important]
+
+This file is supposed to be the canonical control file, but it currently includes many terms with:
+
+Date Stabilized: Pending
+
+for observability terms, status labels, and uncertainty reasons. That creates a control-risk: the canonical term file is now carrying both stabilized core terms and still-pending observability vocabulary in the same authority surface.
+
+Why that matters
+
+If the canonical file is too broad too early, it can blur:
+
+stabilized canonical language
+draft working language
+candidate observability vocabulary
+
+That is not fatal, but it needs explicit handling.
+
+Disposition
+
+Draft-side canonical control candidate — keep, but tighten stabilization boundaries
+
+4) NEXUS_GLOSSARY_AND_INDEX draft
+
+Source type: reference
+Affected layer: governance / terminology support / reference
+Uncertainty: low
+
+Audit result
+
+This is good. It does exactly what it should do:
+
+expands explanation,
+preserves historical mappings,
+records rejected/restricted phrasing,
+supports LTM normalization later,
+explicitly refuses to override the canonical terminology file.
+Key strengths
+
+This file is where the “golden nugget” you described actually has a natural home. It is the right layer for:
+
+corrected mappings,
+rejected language,
+legacy phrasing retention,
+interface-safe phrasing,
+future LTM normalization support.
+Key issue
+
+None major. The main thing is to keep it separate from canonical control and never let it become accidental authority by breadth or convenience. The file already says that, which is excellent.
+
+Disposition
+
+Draft-side kernel support record / extended encyclopedia candidate — strong
+
+[E] Error / Issue Register
+Issue ID	Severity	File	Error / Risk	Why It Matters	Correction
+D1	Medium	TERMINOLOGY_INDEX.md draft	canonical file contains many Pending observability/status terms	may blur stabilized vs working terminology	split stabilized canonical terms from pending observability annex, or add a hard “canonical status” field
+D2	High	snapshot protocol/spec vs legacy generator	new protocol/spec is ahead of runtime implementation	doctrine/standard rewrite will not match real behavior until generator is rewritten	rewrite generator before treating snapshot system as upgraded
+D3	Medium	snapshot protocol/spec	source precedence is excellent on paper, but must be enforced in code	otherwise stale dashboard/input sources will still leak into outputs	port precedence rules directly into new generator implementation
+D4	Low-Medium	glossary draft	glossary is broad enough to become tempting as a convenience authority	breadth can accidentally outrank discipline if not contained	keep glossary in support/reference only
+D5	Conditional	filenames / on-disk naming	uploaded draft filenames include .md.txt and .md.md suffix patterns	if those exact names exist on disk, scanners/registry matching may fail	ensure actual on-disk draft filenames resolve to intended .md names before runtime integration
+Note on D5
+
+This one is conditional. I cannot tell whether those double extensions are only upload/container artifacts or your actual draft folder filenames. The risk is real only if the on-disk files use those exact names, because the doctrine registry and manifest generator logic depend on exact .md identity matching.
+
+[F] Multi-Layer Sandbox Simulation — Trial Run
+Simulation posture
+
+Source type: inference
+Affected layer: governance / observability / terminology / interface
+Uncertainty: medium
+
+This is a conceptual trial run against the draft rules, not code execution.
+
+Iteration 1 — Stale Interface State vs Operator-Confirmed State
+Scenario
+
+The dashboard says a lab is active, but operator-confirmed current state says it is disabled/deferred.
+
+Expected behavior under new draft
+snapshot must preserve distinction between operator-confirmed state, validated execution evidence, canonical governance reference, mirrored reference state, inferred state, and excluded or stale source state
+conflict must remain visible
+stale source exclusion must be declared
+interface-derived state is lowest precedence in the generator spec
+Trial result
+
+PASS
+
+Why
+
+This directly corrects a known legacy problem where stale dashboard state leaked upward into snapshot outputs.
+
+Iteration 2 — Missing Structured Security Source
+Scenario
+
+Security domain exists, but no structured source currently feeds incident counts.
+
+Expected behavior under new draft
+section should degrade visibly
+uncertainty reason should be explicit, such as NO_STRUCTURED_SOURCE
+no invented values allowed
+Trial result
+
+PASS
+
+Why
+
+This is better than the older approach, which still exposed unknowns but without the new explicit uncertainty taxonomy. The new draft is more disciplined.
+
+Iteration 3 — New Interface Term Appears During Rebuild
+Scenario
+
+A new reporting term appears during rewrite and becomes widely reused.
+
+Expected behavior under new draft
+canonical control file governs official meaning
+glossary can explain and map usage
+no silent promotion by convenience or repetition
+rejected or unsafe language stays visibly labeled in glossary history
+Trial result
+
+WATCHLIST
+
+Why
+
+The mechanism is present, but the canonical terminology index still mixes stabilized and pending terms. So this is controlled, but not yet as tight as it could be.
+
+Iteration 4 — Composite Snapshot Builds from Multiple Sources
+Scenario
+
+A snapshot section combines runtime evidence, canonical reference, inferred values, and excluded stale source state.
+
+Expected behavior under new draft
+must be marked as composite
+must preserve source identity
+must include provenance header
+must record excluded sources
+must preserve uncertainty visibly
+Trial result
+
+PASS
+
+Why
+
+This is one of the strongest improvements in the entire draft set.
+
+[G] Master Findings
+[1] These drafts are the correct direction
+
+The snapshot v4 + generator v2 + glossary split show that you are solving the real problem now:
+
+truth containment,
+source precedence,
+uncertainty visibility,
+terminology safety,
+support-layer vs canonical-layer distinction.
+[2] The glossary / canonical split is good
+
+You were right to call out that these should not be confused. They are serving different roles, and the current drafts mostly respect that.
+
+[3] The biggest remaining issue is not doctrine philosophy
+
+It is control-surface and terminology hygiene during implementation.
+
+[4] This batch is good enough to keep separate as draft-side reference
+
+These should stay isolated from live Base V1 until tested. That is the correct discipline.
+
+[H] Bootstrap Handoff Summary
+BOOTSTRAP_HANDOFF_STATUS: DRAFT_REVIEW_COMPLETE
+BATCH_SCOPE: FIRST_4_REWRITTEN_BASE_V1_FILES
+OVERALL_RESULT: STRONG_DIRECTION_WITH_CONTROL_FIXES_NEEDED
+PRIMARY_SUCCESS: SNAPSHOT_TRUTH_CONTAINMENT_SUBSTANTIALLY_IMPROVED
+PRIMARY_RISK: CANONICAL_TERMINOLOGY_FILE_MIXES_STABILIZED_AND_PENDING_TERMS
+IMPLEMENTATION_BLOCKER: NEW_SNAPSHOT_RULES_MUST_BE_MATCHED_BY_REWRITTEN_GENERATOR
+GLOSSARY_STATUS: VALID_EXTENDED_SUPPORT_LAYER
+AUTHORITY_STATUS: CONTAINED
+RECOMMENDATION: CONTINUE_DRAFT_REWRITE_WITH_TERMINOLOGY_TIGHTENING
+[I] Immediate Recommendation
+Recommended next correction
+
+Before expanding the draft set much further, tighten the canonical terminology control file so it clearly distinguishes:
+
+stabilized canonical terms
+vs
+pending observability / status / uncertainty terms
+
+That is the single most important improvement to make in this draft batch.
+
+Recommended disposition for these 4 draft files
+File	Keep separate?	Ready for later Base V1 rewrite use?
+SYSTEM_STATE_SNAPSHOT_PROTOCOL.md v4	Yes	Yes
+SNAPSHOT_GENERATOR_SPEC_v2	Yes	Yes
+TERMINOLOGY_INDEX.md draft updated canonical control	Yes	Yes, after tightening
+NEXUS_GLOSSARY_AND_INDEX draft	Yes	Yes
+[J] Next Move
+
+The next clean move is:
+
+Proceed with Draft Batch 2 review
+
+or, if you want to act immediately on this batch first:
+
+Tighten canonical terminology control file first

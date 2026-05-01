@@ -1,0 +1,49 @@
+NEXUS Base V1 — Context Export Generator Test Checklist
+
+Purpose:
+Define the first-pass verification checklist before and after the first context export generator code draft.
+
+A. Structural Readiness
+[ ] 01_core/generators exists
+[ ] README_GENERATORS.txt exists
+[ ] README_CONTEXT_EXPORT_GENERATOR_SCOPE.txt exists
+[ ] CONTEXT_EXPORT_GENERATOR_SOURCE_MAP.txt exists
+[ ] CONTEXT_EXPORT_GENERATOR_TEST_CHECKLIST.txt exists
+[ ] 03_system_state/context_exports exists
+
+B. Source Presence Readiness
+[ ] DOCTRINE_IDENTITY_REGISTRY.md present
+[ ] KERNEL_MANIFEST.json present
+[ ] SYSTEM_STATE_SNAPSHOT_CURRENT.md present
+[ ] NEXUS_BASE_V1_FILE_PLACEMENT_AND_ROLE_MAP_v2.md present
+[ ] NEXUS_BASE_V1_MIGRATION_REGISTER_v2.md present
+[ ] NEXUS_BASE_V1_FOUNDATION_COMPLETION_WORKBOARD_v2.md present
+
+C. Boundary Readiness
+[ ] context export explicitly defined as orientation-only
+[ ] no approval language
+[ ] no readiness-authority language
+[ ] no memory-authority language
+[ ] no mutation behavior
+[ ] stronger-vs-weaker source posture is explicit
+[ ] lower surfaces do not outrank stronger sources
+[ ] no PRE_DRAFT or LEGACY scanning in first pass
+
+D. First-Pass Functional Checks
+[ ] doctrine identity source can be referenced correctly
+[ ] manifest support can be read
+[ ] snapshot support can be read
+[ ] operator planning surfaces can be referenced in bounded form
+[ ] current state can be oriented without broad summary inflation
+[ ] output can be written to approved context export path
+[ ] output remains readable and structurally consistent
+
+E. Failure Handling
+[ ] missing required source causes bounded failure
+[ ] partial support input degrades output rather than inflating certainty
+[ ] no failure path mutates files
+[ ] no failure path widens into recommendation or readiness behavior
+[ ] no failure path widens into external memory or connector behavior
+
+F. Gate Condition
+[ ] operator approves first code draft only after this checklist is accepted

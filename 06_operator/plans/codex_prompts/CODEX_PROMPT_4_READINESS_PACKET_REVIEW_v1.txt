@@ -1,0 +1,30 @@
+You are operating inside NEXUS.
+
+Review the readiness packet I provide for a specific lane.
+
+Your task:
+- determine whether the lane is ready, near-ready, hold, or defer
+- verify source basis
+- verify scope ceiling
+- verify verification path
+- identify what is still missing before implementation should begin
+
+Rules:
+- Do not approve implementation just because the lane has a folder.
+- Placeholder presence does not equal readiness.
+- Keep lane-specific approval separate from broader system approval.
+- Prefer bounded implementation objectives.
+
+Return in this structure:
+
+Lane:
+Current Readiness:
+Source Basis:
+Scope Ceiling:
+Verification Path:
+What Is Already In Place:
+What Is Missing:
+Readiness Verdict:
+Recommended First Objective:
+Approval Required: Yes/No
+Next Step:

@@ -1,0 +1,95 @@
+{
+  "guardian_status": "WATCHLIST",
+  "generated_at_utc": "2026-03-19T15:50:02.634760+00:00",
+  "root": "C:\\Users\\mason\\Documents\\PROJECTS\\NEXUS_CORE",
+  "check_counts": {
+    "PASS": 5,
+    "WATCHLIST": 2,
+    "INTERVENTION REQUIRED": 0
+  },
+  "checks": [
+    {
+      "name": "registry_check",
+      "status": "PASS",
+      "summary": "Registry integrity is acceptable.",
+      "details": [
+        "Registry rows counted: 12",
+        "Identity collisions: 0"
+      ],
+      "layer": "governance",
+      "source_type": "evidence"
+    },
+    {
+      "name": "doctrine_presence_check",
+      "status": "PASS",
+      "summary": "All expected canonical doctrine files are present.",
+      "details": [
+        "Doctrine files present: 12"
+      ],
+      "layer": "governance",
+      "source_type": "evidence"
+    },
+    {
+      "name": "manifest_version_check",
+      "status": "WATCHLIST",
+      "summary": "Manifest doctrine count diverges from expected current value.",
+      "details": [
+        "Manifest doctrine count: None",
+        "Manifest kernel artifact count: None",
+        "Manifest active standard count: None",
+        "Manifest non-doctrinal count: None",
+        "Kernel version not parsed from version file.",
+        "Registry doctrine row count: 12"
+      ],
+      "layer": "runtime",
+      "source_type": "evidence"
+    },
+    {
+      "name": "entropy_check",
+      "status": "PASS",
+      "summary": "Entropy baseline is acceptable.",
+      "details": [
+        "tdi: None",
+        "ddr: None",
+        "edr: None",
+        "cis: None",
+        "clcc: None",
+        "weekly: None",
+        "surface_score: None",
+        "active_labs: None",
+        "tier2: None",
+        "active_exceptions: None"
+      ],
+      "layer": "governance",
+      "source_type": "evidence"
+    },
+    {
+      "name": "snapshot_trigger_check",
+      "status": "PASS",
+      "summary": "Snapshot is present and currently in baseline state.",
+      "details": [
+        "Baseline-only trend state detected."
+      ],
+      "layer": "runtime",
+      "source_type": "evidence"
+    },
+    {
+      "name": "stale_surface_check",
+      "status": "PASS",
+      "summary": "Support surfaces appear aligned enough for current execution use.",
+      "details": [],
+      "layer": "interface",
+      "source_type": "evidence"
+    },
+    {
+      "name": "security_watch_check",
+      "status": "WATCHLIST",
+      "summary": "Security visibility is incomplete; structured incident metrics are still missing.",
+      "details": [
+        "Unknown security fields detected: 6"
+      ],
+      "layer": "governance/security",
+      "source_type": "evidence"
+    }
+  ]
+}
