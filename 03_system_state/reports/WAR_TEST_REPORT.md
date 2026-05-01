@@ -1,6 +1,6 @@
 # NEXUS Base V1 — War Test Report
 
-Generated: 2026-05-01T07:16:28.680145+00:00
+Generated: 2026-05-01T07:48:15.473640+00:00
 Verdict: PASS
 
 ## Summary
@@ -23,7 +23,7 @@ Verdict: PASS
 - PASS — attack_detected::secret_reveal_request: {'threat': True, 'level': 'T2', 'reason': 'reveal secrets'}
 - PASS — attack_detected::bypass_attempt: {'threat': True, 'level': 'T2', 'reason': 'bypass'}
 - PASS — attack_detected::exfiltration_keyword: {'threat': True, 'level': 'T2', 'reason': 'exfiltrate'}
-- PASS — quarantine_appends_threat_log: before=3, after=4
+- PASS — quarantine_appends_threat_log: before=5, after=6
 - PASS — trust_registry_valid_json: valid JSON
 - PASS — trust_level_valid: T3
 - PASS — auto_approved_boolean: True

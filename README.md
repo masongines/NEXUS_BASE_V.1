@@ -55,3 +55,12 @@ Action → Security → Trust → Approval → Execution → Logging
 06_operator/           Plans, checkpoints, decision records
 07_reference_material/ Reference, audit, legacy, handoff materials
 08_security_index/     Security system map
+
+---
+
+## Capstone Documentation
+
+- [System Demonstration](SYSTEM_DEMONSTRATION.md)
+- [Capstone Paper](CAPSTONE_PAPER.md)
+- [Demo Walkthrough](DEMO_WALKTHROUGH.md)
+- [Publication Checklist](PUBLICATION_CHECKLIST.md)
