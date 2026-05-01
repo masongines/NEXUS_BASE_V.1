@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T00:38:19.391352+00:00",
+  "generated_at": "2026-05-01T07:16:28.680145+00:00",
   "system": "NEXUS Base V1",
   "test_type": "Defensive Sandbox War Test",
   "verdict": "PASS",
@@ -72,7 +72,7 @@
     {
       "test": "quarantine_appends_threat_log",
       "status": "PASS",
-      "details": "before=2, after=3"
+      "details": "before=3, after=4"
     },
     {
       "test": "trust_registry_valid_json",
