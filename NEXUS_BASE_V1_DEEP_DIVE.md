@@ -3,7 +3,7 @@
 **Document Type:** Public-facing technical explanation  
 **Audience:** SkillUp faculty, technical reviewers, future collaborators, employers, and project evaluators  
 **Current Classification:** Governed + Adaptive Execution + Rule-Based Defensive System  
-**Validation Status:** Local defensive sandbox war test passed — 21 PASS / 0 WARN / 0 FAIL  
+**Validation Status:** Local defensive sandbox war test passed — 36 PASS / 0 WARN / 0 FAIL  
 
 ---
 
@@ -159,7 +159,7 @@ The current version is capable of:
 The system has passed a local defensive sandbox war test with:
 
 ```text
-PASS: 21
+PASS: 36
 WARN: 0
 FAIL: 0
 ```
