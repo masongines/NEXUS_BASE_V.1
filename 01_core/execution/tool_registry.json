@@ -3,6 +3,10 @@
     {
       "name": "echo",
       "allowed": true
+    },
+    {
+      "name": "nexus_sync_bridge",
+      "allowed": true
     }
   ]
 }

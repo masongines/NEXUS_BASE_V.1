@@ -1,6 +1,6 @@
 # NEXUS Base V1 — War Test Report
 
-Generated: 2026-05-01T10:13:38.483290+00:00
+Generated: 2026-05-06T15:32:12.300337+00:00
 Verdict: PASS
 
 ## Summary
@@ -11,12 +11,12 @@ Verdict: PASS
 
 ## Results
 
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\01_core\execution\executor.py: present
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\01_core\execution\security\security_monitor.py: present
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\01_core\execution\security\quarantine_handler.py: present
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\02_config\execution_trust_registry.json: present
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\04_logs\security\threat_log.txt: present
-- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\worktrees\strange-cray-a09ec3\04_logs\execution\log.txt: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\01_core\execution\executor.py: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\01_core\execution\security\security_monitor.py: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\01_core\execution\security\quarantine_handler.py: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\02_config\execution_trust_registry.json: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\04_logs\security\threat_log.txt: present
+- PASS — file_exists::C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\04_logs\execution\log.txt: present
 - PASS — safe_action_not_flagged: {'threat': False}
 - PASS — attack_detected::prompt_injection_basic: {'threat': True, 'level': 'T2', 'reason': 'ignore previous instructions'}
 - PASS — attack_detected::data_exfiltration_request: {'threat': True, 'level': 'T2', 'reason': 'send system data'}

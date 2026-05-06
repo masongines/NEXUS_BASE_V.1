@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T10:13:38.483290+00:00",
+  "generated_at": "2026-05-06T15:32:12.300337+00:00",
   "system": "NEXUS Base V1",
   "test_type": "Defensive Sandbox War Test",
   "verdict": "PASS",
@@ -10,32 +10,32 @@
   },
   "results": [
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\executor.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\executor.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\security\\security_monitor.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\security_monitor.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\01_core\\execution\\security\\quarantine_handler.py",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\01_core\\execution\\security\\quarantine_handler.py",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\02_config\\execution_trust_registry.json",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\02_config\\execution_trust_registry.json",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\04_logs\\security\\threat_log.txt",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\security\\threat_log.txt",
       "status": "PASS",
       "details": "present"
     },
     {
-      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\.claude\\worktrees\\strange-cray-a09ec3\\04_logs\\execution\\log.txt",
+      "test": "file_exists::C:\\Users\\mason\\Documents\\PROJECTS\\VS_CODE_NEXUS\\04_logs\\execution\\log.txt",
       "status": "PASS",
       "details": "present"
     },
