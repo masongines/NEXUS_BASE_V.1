@@ -32,3 +32,6 @@ dist/
 Thumbs.db
 
 .claude/
+
+# Large binary reference files (PDFs stored outside git)
+*.pdf
