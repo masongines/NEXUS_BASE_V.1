@@ -22,13 +22,13 @@ Before Claude Code can connect to Pieces, make sure:
 Open a terminal in VS Code and run:
 
 ```bash
-claude mcp add pieces-mcp http://localhost:39300/model_mcp
+claude mcp add --transport http pieces http://localhost:39300/model_context_protocol/2025-03-26/mcp
 ```
 
 If Pieces uses SSE transport (try this if the above fails):
 
 ```bash
-claude mcp add --transport sse pieces-mcp http://localhost:39300/model_mcp/sse
+claude mcp add --transport sse pieces http://localhost:39300/model_context_protocol/2024-11-05/sse
 ```
 
 Then verify it was added:
@@ -37,7 +37,7 @@ Then verify it was added:
 claude mcp list
 ```
 
-You should see `pieces-mcp` in the list. Done — skip to the Test section.
+You should see `pieces` in the list. Done — skip to the Test section.
 
 ---
 
@@ -52,33 +52,39 @@ If the file doesn't exist, create it. Add or merge this content:
 ```json
 {
   "mcpServers": {
-    "pieces-mcp": {
+    "pieces": {
       "type": "http",
-      "url": "http://localhost:39300/model_mcp"
+      "url": "http://localhost:39300/model_context_protocol/2025-03-26/mcp"
     }
   }
 }
 ```
 
-If the file already has content, add the `"pieces-mcp"` block inside the existing `"mcpServers"` object — don't replace anything else.
+If the file already has content, add the `"pieces"` block inside the existing `"mcpServers"` object — don't replace anything else.
 
 ---
 
 ## Option C: Project-Level Config (VS_CODE_NEXUS Only)
 
-To scope the Pieces connection only to this project, create:
+To scope the Pieces connection only to this project, create `.mcp.json` at the project root:
 
-**File:** `C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.claude\settings.json`
+**File:** `C:\Users\mason\Documents\PROJECTS\VS_CODE_NEXUS\.mcp.json`
 
 ```json
 {
   "mcpServers": {
-    "pieces-mcp": {
+    "pieces": {
       "type": "http",
-      "url": "http://localhost:39300/model_mcp"
+      "url": "http://localhost:39300/model_context_protocol/2025-03-26/mcp"
     }
   }
 }
+```
+
+Or use the CLI with `--scope project`:
+
+```bash
+claude mcp add --transport http --scope project pieces http://localhost:39300/model_context_protocol/2025-03-26/mcp
 ```
 
 This activates Pieces MCP only when Claude Code is running inside the VS_CODE_NEXUS directory. Recommended for keeping NEXUS context clean.
@@ -113,9 +119,9 @@ If Pieces OS is running and MCP is connected, Claude Code will pull context dire
 
 | Problem | Fix |
 |---|---|
-| `pieces-mcp not found` | Make sure Pieces OS desktop app is running |
+| `pieces not found` | Make sure Pieces OS desktop app is running |
 | `Connection refused` | Check Pieces is on port 39300 — open Pieces → Settings → confirm MCP port |
-| `Transport error` | Try `--transport sse` flag in Option A |
+| `Transport error` | Try `--transport sse` flag and the SSE URL above |
 | `Permission denied` | Run terminal as administrator once to register the MCP server |
 | Still failing | Export from Pieces manually → save to `PIECES_EXPORT/` folder as interim |
 
@@ -140,4 +146,5 @@ Content pulled from Pieces is `source_type: recall` until operator reviews and c
 
 ---
 
-*Generated: 2026-05-06 | Active root: VS_CODE_NEXUS / NEXUS Base V1*
+*Updated: 2026-05-06 — corrected MCP endpoint to official `/model_context_protocol/2025-03-26/mcp` path*  
+*Active root: VS_CODE_NEXUS / NEXUS Base V1*
