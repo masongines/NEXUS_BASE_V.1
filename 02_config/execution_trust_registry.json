@@ -2,5 +2,13 @@
   "echo": {
     "trust_level": "T3",
     "auto_approved": true
+  },
+  "learning_capture": {
+    "trust_level": "T2",
+    "auto_approved": false
+  },
+  "governance_event": {
+    "trust_level": "T2",
+    "auto_approved": false
   }
 }
