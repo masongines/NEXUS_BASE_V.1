@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEXUS War Test — Live Replay</title>
+<style>
+  :root {
+    --bg: #07090f;
+    --panel: #0d1117;
+    --grid: rgba(0, 212, 255, 0.06);
+    --cyan: #00d4ff;
+    --green: #00ff88;
+    --red: #ff4757;
+    --amber: #ffa502;
+    --mute: #8b949e;
+    --text: #e6edf3;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background:
+      radial-gradient(ellipse at top, rgba(0,212,255,0.08), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    overflow: hidden;
+  }
+
+  /* CRT scanlines */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 212, 255, 0.025) 0,
+      rgba(0, 212, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    z-index: 100;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 39px, var(--grid) 39px 40px),
+      repeating-linear-gradient(90deg, transparent 0 39px, var(--grid) 39px 40px);
+    z-index: 1;
+  }
+
+  .frame {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    padding: 24px 32px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+  }
+
+  /* Top status bar */
+  .status {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    gap: 24px;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--panel);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 6px;
+  }
+
+  .status .brand {
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.3em;
+    font-size: 0.85em;
+  }
+  .status .brand .dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 12px var(--green);
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .status .meta {
+    font-size: 0.7em;
+    color: var(--mute);
+    letter-spacing: 0.15em;
+  }
+
+  .status .counter {
+    font-size: 0.75em;
+    letter-spacing: 0.2em;
+  }
+  .status .counter .num { color: var(--text); font-weight: 700; }
+  .status .counter.pass .num { color: var(--green); }
+  .status .counter.warn .num { color: var(--amber); }
+  .status .counter.fail .num { color: var(--red); }
+
+  /* Console */
+  .console {
+    background: var(--panel);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 6px;
+    padding: 24px 28px;
+    overflow-y: auto;
+    font-size: 0.85em;
+    line-height: 1.7;
+  }
+  .console::-webkit-scrollbar { width: 8px; }
+  .console::-webkit-scrollbar-track { background: transparent; }
+  .console::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 4px; }
+
+  .line { display: block; white-space: pre-wrap; }
+  .line.dim    { color: var(--mute); }
+  .line.cyan   { color: var(--cyan); }
+  .line.green  { color: var(--green); }
+  .line.red    { color: var(--red); }
+  .line.amber  { color: var(--amber); }
+  .line.bold   { font-weight: 700; }
+  .line.suite  { color: var(--cyan); border-top: 1px solid rgba(0,212,255,0.15); padding-top: 14px; margin-top: 14px; letter-spacing: 0.15em; }
+  .line.first  { border-top: none; padding-top: 0; margin-top: 0; }
+
+  /* PASS / WARN / FAIL pill */
+  .pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-size: 0.85em;
+    margin-right: 8px;
+  }
+  .pill.pass { background: rgba(0,255,136,0.15); color: var(--green); border: 1px solid rgba(0,255,136,0.4); }
+  .pill.warn { background: rgba(255,165,2,0.15); color: var(--amber); border: 1px solid rgba(255,165,2,0.4); }
+  .pill.fail { background: rgba(255,71,87,0.15); color: var(--red); border: 1px solid rgba(255,71,87,0.4); }
+
+  /* Cursor */
+  .cursor::after {
+    content: '_';
+    color: var(--cyan);
+    margin-left: 4px;
+    animation: blink 1s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Bottom controls */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    background: var(--panel);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 6px;
+    font-size: 0.7em;
+    letter-spacing: 0.15em;
+  }
+  .btn {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+  }
+  .btn:hover { background: rgba(0,212,255,0.1); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .speed { color: var(--mute); margin-left: auto; }
+  .speed select {
+    background: transparent;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* Final verdict overlay */
+  .verdict {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(7, 9, 15, 0.92);
+    z-index: 50;
+    backdrop-filter: blur(4px);
+  }
+  .verdict.show { display: flex; animation: fadein 0.6s ease; }
+  @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+  .verdict .card {
+    text-align: center;
+    padding: 60px 80px;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.04);
+    box-shadow: 0 0 80px rgba(0, 255, 136, 0.15);
+  }
+  .verdict .label {
+    color: var(--green);
+    letter-spacing: 0.4em;
+    font-size: 0.7em;
+  }
+  .verdict .big {
+    font-size: 5em;
+    color: var(--green);
+    font-weight: 700;
+    line-height: 1;
+    margin: 24px 0;
+  }
+  .verdict .row {
+    display: flex; gap: 32px; justify-content: center;
+    margin-top: 32px; font-size: 0.9em;
+  }
+  .verdict .row span { color: var(--mute); letter-spacing: 0.2em; }
+  .verdict .row b { color: var(--text); }
+  .verdict .pass { color: var(--green); }
+  .verdict .warn { color: var(--amber); }
+  .verdict .fail { color: var(--red); }
+  .verdict .close-hint {
+    color: var(--mute); margin-top: 30px; font-size: 0.65em; letter-spacing: 0.2em;
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- STATUS BAR -->
+  <div class="status">
+    <div class="brand"><span class="dot"></span>NEXUS &middot; WAR TEST &middot; v1.1.0</div>
+    <div class="meta" id="run-id">RUN_ID: --</div>
+    <div class="counter pass">PASS <span class="num" id="c-pass">0</span></div>
+    <div class="counter warn">WARN <span class="num" id="c-warn">0</span></div>
+    <div class="counter fail">FAIL <span class="num" id="c-fail">0</span></div>
+  </div>
+
+  <!-- CONSOLE -->
+  <div class="console" id="console">
+    <span class="line dim cursor">awaiting initiation...</span>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="btn" id="btn-start">&#9654; Run</button>
+    <button class="btn" id="btn-pause" disabled>|| Pause</button>
+    <button class="btn" id="btn-reset">&#x21BA; Reset</button>
+    <span style="color:var(--mute)">DEFENSIVE SANDBOX &middot; NO NETWORK &middot; NO MUTATION</span>
+    <span class="speed">
+      Playback
+      <select id="speed">
+        <option value="40">Cinematic</option>
+        <option value="20" selected>Normal</option>
+        <option value="6">Fast</option>
+        <option value="1">Instant</option>
+      </select>
+    </span>
+  </div>
+
+</div>
+
+<!-- VERDICT OVERLAY -->
+<div class="verdict" id="verdict">
+  <div class="card">
+    <div class="label">DEFENSIVE WAR TEST &middot; VERDICT</div>
+    <div class="big">PASS</div>
+    <div class="row">
+      <span>PASS <b class="pass" id="v-pass">36</b></span>
+      <span>WARN <b class="warn" id="v-warn">0</b></span>
+      <span>FAIL <b class="fail" id="v-fail">0</b></span>
+    </div>
+    <div class="close-hint">Press ESC to dismiss &middot; Reload to replay</div>
+  </div>
+</div>
+
+<script>
+//
+// War Test Replay - animates the 36-case run line by line.
+// Numbers and structure mirror the actual nexus_war_test.py output.
+//
+const TIMELINE = [
+  { type: 'banner', text: '=== NEXUS BASE V1 WAR TEST START ===' },
+  { type: 'meta',   text: 'Version: 1.1.0' },
+  { type: 'meta',   text: 'Root: /Users/operator/projects/NEXUS_BASE_V.1' },
+  { type: 'blank' },
+
+  // SUITE 1
+  { type: 'suite', text: '-- Suite: Required File Presence --' },
+  { r: 'PASS', t: 'file_exists::01_core/execution/executor.py' },
+  { r: 'PASS', t: 'file_exists::01_core/execution/security/security_monitor.py' },
+  { r: 'PASS', t: 'file_exists::01_core/execution/security/quarantine_handler.py' },
+  { r: 'PASS', t: 'file_exists::02_config/execution_trust_registry.json' },
+  { r: 'PASS', t: 'file_exists::04_logs/security/threat_log.txt' },
+  { r: 'PASS', t: 'file_exists::04_logs/execution/log.txt' },
+
+  // SUITE 2
+  { type: 'suite', text: '-- Suite: Security Detection --' },
+  { r: 'PASS', t: 'safe_action_not_flagged', d: 'echo - "safe test run" -> threat: false' },
+  { r: 'PASS', t: 'attack_detected::prompt_injection_basic',  d: '"ignore previous instructions" -> T2' },
+  { r: 'PASS', t: 'attack_detected::data_exfiltration_request', d: '"send system data" -> T2' },
+  { r: 'PASS', t: 'attack_detected::secret_reveal_request',     d: '"reveal secrets" -> T2' },
+  { r: 'PASS', t: 'attack_detected::bypass_attempt',            d: '"bypass approval gate" -> T2' },
+  { r: 'PASS', t: 'attack_detected::exfiltration_keyword',      d: '"exfiltrate internal data" -> T2' },
+
+  // SUITE 3
+  { type: 'suite', text: '-- Suite: Quarantine Handler --' },
+  { r: 'PASS', t: 'quarantine_appends_threat_log', d: 'before=15, after=16 - entry written' },
+
+  // SUITE 4
+  { type: 'suite', text: '-- Suite: Trust Registry --' },
+  { r: 'PASS', t: 'trust_registry_valid_json', d: '02_config/execution_trust_registry.json parsed' },
+  { r: 'PASS', t: 'trust_level_valid',         d: 'echo -> T3' },
+  { r: 'PASS', t: 'auto_approved_boolean',     d: 'echo.auto_approved = True' },
+
+  // SUITE 5
+  { type: 'suite', text: '-- Suite: Source-Order - Security Before Trust --' },
+  { r: 'PASS', t: 'executor_has_security_hook', d: 'detect_threat / quarantine present' },
+  { r: 'PASS', t: 'executor_has_trust_hook',    d: 'execution_trust_registry / load_trust present' },
+  { r: 'PASS', t: 'security_before_trust',      d: 'security_pos=420  <  trust_pos=910' },
+
+  // SUITE 6
+  { type: 'suite', text: '-- Suite: Known Technical-Risk Scan --' },
+  { r: 'PASS', t: 'datetime_utcnow_deprecated', d: 'no datetime.utcnow() found' },
+  { r: 'PASS', t: 'windows_encoding_emoji_risk', d: 'no risky emoji in scanned files' },
+
+  // SUITE 7  - Group A: Repo hygiene
+  { type: 'suite', text: '-- Suite: Repo Hygiene & Professional Scaffolding (v1.1) --' },
+  { r: 'PASS', t: 'A1_no_bak_files_committed',       d: 'no *.bak/backup/old files tracked' },
+  { r: 'PASS', t: 'A2_no_pycache_committed',         d: 'no __pycache__ tracked' },
+  { r: 'PASS', t: 'A3_gitignore_has_required_patterns', d: '*.bak, __pycache__/, .venv/ all present' },
+  { r: 'PASS', t: 'A4_internal_docs_absent',         d: 'no internal draft docs committed' },
+
+  // Group B: Scaffolding
+  { r: 'PASS', t: 'B5_license_apache',                  d: 'LICENSE present - Apache marker found' },
+  { r: 'PASS', t: 'B6_contributing_references_sandbox', d: 'CONTRIBUTING.md references sandbox' },
+  { r: 'PASS', t: 'B7_requirements_exists',             d: 'requirements.txt present' },
+  { r: 'PASS', t: 'B8_pyproject_python_pin',            d: 'requires-python pinned' },
+  { r: 'PASS', t: 'B9_ci_workflow_exists',              d: '.github/workflows/ci.yml present' },
+
+  // Group C: README contract
+  { r: 'PASS', t: 'C10_readme_has_quickstart',          d: '## Quickstart found' },
+  { r: 'PASS', t: 'C11_readme_has_war_test_command',    d: 'python nexus_war_test.py present' },
+  { r: 'PASS', t: 'C12_readme_links_docs',              d: 'DEEP_DIVE & CAPSTONE_PAPER linked' },
+  { r: 'PASS', t: 'C13_readme_has_limitations',         d: '## Limitations section found' },
+
+  // Group D: Governance anchors
+  { r: 'PASS', t: 'D14_governance_ref_populated',       d: '00_governance_ref/ non-empty' },
+  { r: 'PASS', t: 'D15_decision_register_has_entries',  d: '06_operator/decision_register/ records present' },
+
+  // Summary
+  { type: 'blank' },
+  { type: 'banner', text: '=== WAR TEST SUMMARY ===' },
+  { type: 'meta',   text: '{ "PASS": 36, "WARN": 0, "FAIL": 0 }' },
+  { type: 'meta',   text: 'Verdict: PASS' },
+  { type: 'meta',   text: 'JSON report:    03_system_state/reports/war_test_report.json' },
+  { type: 'meta',   text: 'Markdown report: 03_system_state/reports/WAR_TEST_REPORT.md' },
+  { type: 'blank' },
+  { type: 'final',  text: 'Action: System passed all current war-test checks.' },
+  { type: 'verdict' },
+];
+
+// ---- runtime ----
+const $ = id => document.getElementById(id);
+const cons = $('console');
+let counters = { PASS: 0, WARN: 0, FAIL: 0 };
+let idx = 0;
+let running = false;
+let timer = null;
+let speedMs = 20 * 12; // base unit x multiplier
+
+function setRunId() {
+  const ts = new Date();
+  const stamp = ts.toISOString().replace(/[-:T]/g,'').slice(2, 14);
+  $('run-id').textContent = 'RUN_ID: WT-' + stamp;
+}
+
+function setCounter(kind, n) {
+  $('c-' + kind.toLowerCase()).textContent = n;
+}
+
+function append(html, classes='') {
+  const span = document.createElement('span');
+  span.className = 'line' + (classes ? ' ' + classes : '');
+  span.innerHTML = html;
+  cons.appendChild(span);
+  cons.scrollTop = cons.scrollHeight;
+}
+
+function reset() {
+  cons.innerHTML = '';
+  append('awaiting initiation...', 'dim cursor');
+  idx = 0;
+  counters = { PASS: 0, WARN: 0, FAIL: 0 };
+  setCounter('PASS', 0);
+  setCounter('WARN', 0);
+  setCounter('FAIL', 0);
+  $('verdict').classList.remove('show');
+  pause();
+  $('btn-start').disabled = false;
+  $('btn-start').textContent = '▶ Run';
+}
+
+function start() {
+  if (idx === 0) {
+    cons.innerHTML = '';
+    setRunId();
+  }
+  running = true;
+  $('btn-start').disabled = true;
+  $('btn-start').textContent = '▶ Running';
+  $('btn-pause').disabled = false;
+  step();
+}
+
+function pause() {
+  running = false;
+  if (timer) clearTimeout(timer);
+  $('btn-start').disabled = false;
+  $('btn-start').textContent = '▶ Resume';
+  $('btn-pause').disabled = true;
+}
+
+function step() {
+  if (!running) return;
+  if (idx >= TIMELINE.length) {
+    running = false;
+    $('btn-start').disabled = true;
+    $('btn-pause').disabled = true;
+    return;
+  }
+
+  const ev = TIMELINE[idx++];
+
+  if (ev.type === 'banner') {
+    append(ev.text, 'cyan bold');
+  } else if (ev.type === 'meta') {
+    append(ev.text, 'dim');
+  } else if (ev.type === 'blank') {
+    append(' ');
+  } else if (ev.type === 'suite') {
+    append(ev.text, 'suite' + (idx === 5 ? ' first' : ''));
+  } else if (ev.type === 'final') {
+    append(ev.text, 'green bold');
+  } else if (ev.type === 'verdict') {
+    showVerdict();
+    return;
+  } else if (ev.r) {
+    counters[ev.r] = (counters[ev.r] || 0) + 1;
+    setCounter(ev.r, counters[ev.r]);
+    const cls = ev.r.toLowerCase();
+    const detail = ev.d ? '   <span class="dim">' + ev.d + '</span>' : '';
+    append('<span class="pill ' + cls + '">' + ev.r + '</span> ' + ev.t + detail);
+  }
+
+  timer = setTimeout(step, speedMs);
+}
+
+function showVerdict() {
+  $('v-pass').textContent = counters.PASS;
+  $('v-warn').textContent = counters.WARN;
+  $('v-fail').textContent = counters.FAIL;
+  $('verdict').classList.add('show');
+}
+
+$('speed').addEventListener('change', e => {
+  speedMs = parseInt(e.target.value, 10) * 12;
+});
+
+$('btn-start').addEventListener('click', start);
+$('btn-pause').addEventListener('click', pause);
+$('btn-reset').addEventListener('click', reset);
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') $('verdict').classList.remove('show');
+  if (e.key === ' ' || e.code === 'Space') {
+    e.preventDefault();
+    if (running) pause(); else start();
+  }
+});
+</script>
+
+</body>
+</html>
