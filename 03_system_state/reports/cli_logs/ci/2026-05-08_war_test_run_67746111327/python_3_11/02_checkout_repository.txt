@@ -1,0 +1,72 @@
+﻿2026-05-08T00:34:16.3146827Z ##[group]Run actions/checkout@v4
+2026-05-08T00:34:16.3147734Z with:
+2026-05-08T00:34:16.3148165Z   repository: masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:16.3148848Z   token: ***
+2026-05-08T00:34:16.3149242Z   ssh-strict: true
+2026-05-08T00:34:16.3149637Z   ssh-user: git
+2026-05-08T00:34:16.3150044Z   persist-credentials: true
+2026-05-08T00:34:16.3150498Z   clean: true
+2026-05-08T00:34:16.3150906Z   sparse-checkout-cone-mode: true
+2026-05-08T00:34:16.3151402Z   fetch-depth: 1
+2026-05-08T00:34:16.3151780Z   fetch-tags: false
+2026-05-08T00:34:16.3152179Z   show-progress: true
+2026-05-08T00:34:16.3152590Z   lfs: false
+2026-05-08T00:34:16.3152966Z   submodules: false
+2026-05-08T00:34:16.3153372Z   set-safe-directory: true
+2026-05-08T00:34:16.3154021Z ##[endgroup]
+2026-05-08T00:34:16.4258307Z Syncing repository: masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:16.4260177Z ##[group]Getting Git version info
+2026-05-08T00:34:16.4260966Z Working directory is '/home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1'
+2026-05-08T00:34:16.4262070Z [command]/usr/bin/git version
+2026-05-08T00:34:16.4310052Z git version 2.53.0
+2026-05-08T00:34:16.4336561Z ##[endgroup]
+2026-05-08T00:34:16.4358333Z Temporarily overriding HOME='/home/runner/work/_temp/0e61d53f-441e-46a2-9d1d-b30969501ac3' before making global git config changes
+2026-05-08T00:34:16.4359734Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-08T00:34:16.4363820Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:16.4394722Z Deleting the contents of '/home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1'
+2026-05-08T00:34:16.4398564Z ##[group]Initializing the repository
+2026-05-08T00:34:16.4403011Z [command]/usr/bin/git init /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:16.4535112Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-08T00:34:16.4537093Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-08T00:34:16.4538988Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-08T00:34:16.4540804Z hint: call:
+2026-05-08T00:34:16.4541592Z hint:
+2026-05-08T00:34:16.4542473Z hint: 	git config --global init.defaultBranch <name>
+2026-05-08T00:34:16.4543629Z hint:
+2026-05-08T00:34:16.4544821Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-08T00:34:16.4547038Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-08T00:34:16.4548463Z hint:
+2026-05-08T00:34:16.4549239Z hint: 	git branch -m <name>
+2026-05-08T00:34:16.4550059Z hint:
+2026-05-08T00:34:16.4551148Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-08T00:34:16.4552940Z Initialized empty Git repository in /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/.git/
+2026-05-08T00:34:16.4555630Z [command]/usr/bin/git remote add origin https://github.com/masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:16.4581485Z ##[endgroup]
+2026-05-08T00:34:16.4582733Z ##[group]Disabling automatic garbage collection
+2026-05-08T00:34:16.4586489Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-08T00:34:16.4615245Z ##[endgroup]
+2026-05-08T00:34:16.4616734Z ##[group]Setting up auth
+2026-05-08T00:34:16.4623050Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-08T00:34:16.4653397Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-08T00:34:16.4946585Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-08T00:34:16.4975487Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-08T00:34:16.5187375Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-08T00:34:16.5219060Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-08T00:34:16.5451013Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-08T00:34:16.5490543Z ##[endgroup]
+2026-05-08T00:34:16.5491834Z ##[group]Fetching the repository
+2026-05-08T00:34:16.5501264Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +80d10d5d47cefe81c0a975f85004df12e9073fc3:refs/remotes/origin/main
+2026-05-08T00:34:17.1332302Z From https://github.com/masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:17.1334057Z  * [new ref]         80d10d5d47cefe81c0a975f85004df12e9073fc3 -> origin/main
+2026-05-08T00:34:17.1363458Z ##[endgroup]
+2026-05-08T00:34:17.1364959Z ##[group]Determining the checkout info
+2026-05-08T00:34:17.1366926Z ##[endgroup]
+2026-05-08T00:34:17.1370141Z [command]/usr/bin/git sparse-checkout disable
+2026-05-08T00:34:17.1408400Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-08T00:34:17.1437746Z ##[group]Checking out the ref
+2026-05-08T00:34:17.1439905Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-08T00:34:17.1609579Z Switched to a new branch 'main'
+2026-05-08T00:34:17.1611235Z branch 'main' set up to track 'origin/main'.
+2026-05-08T00:34:17.1618042Z ##[endgroup]
+2026-05-08T00:34:17.1653702Z [command]/usr/bin/git log -1 --format=%H
+2026-05-08T00:34:17.1675369Z 80d10d5d47cefe81c0a975f85004df12e9073fc3

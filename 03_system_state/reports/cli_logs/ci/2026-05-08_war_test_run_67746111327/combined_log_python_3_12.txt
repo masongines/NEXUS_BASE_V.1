@@ -1,0 +1,195 @@
+﻿2026-05-08T00:34:21.5144528Z Current runner version: '2.334.0'
+2026-05-08T00:34:21.5169345Z ##[group]Runner Image Provisioner
+2026-05-08T00:34:21.5170176Z Hosted Compute Agent
+2026-05-08T00:34:21.5170708Z Version: 20260213.493
+2026-05-08T00:34:21.5171380Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-08T00:34:21.5172106Z Build Date: 2026-02-13T00:28:41Z
+2026-05-08T00:34:21.5172833Z Worker ID: {0438f245-131c-440c-96ed-d60532a807d7}
+2026-05-08T00:34:21.5173515Z Azure Region: centralus
+2026-05-08T00:34:21.5174172Z ##[endgroup]
+2026-05-08T00:34:21.5175360Z ##[group]Operating System
+2026-05-08T00:34:21.5175956Z Ubuntu
+2026-05-08T00:34:21.5176841Z 24.04.4
+2026-05-08T00:34:21.5177322Z LTS
+2026-05-08T00:34:21.5177784Z ##[endgroup]
+2026-05-08T00:34:21.5178332Z ##[group]Runner Image
+2026-05-08T00:34:21.5178897Z Image: ubuntu-24.04
+2026-05-08T00:34:21.5179379Z Version: 20260413.86.1
+2026-05-08T00:34:21.5180675Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-08T00:34:21.5182043Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-08T00:34:21.5183013Z ##[endgroup]
+2026-05-08T00:34:21.5184048Z ##[group]GITHUB_TOKEN Permissions
+2026-05-08T00:34:21.5185983Z Contents: read
+2026-05-08T00:34:21.5187002Z Metadata: read
+2026-05-08T00:34:21.5187476Z Packages: read
+2026-05-08T00:34:21.5188034Z ##[endgroup]
+2026-05-08T00:34:21.5190201Z Secret source: Actions
+2026-05-08T00:34:21.5190848Z Prepare workflow directory
+2026-05-08T00:34:21.5529991Z Prepare all required actions
+2026-05-08T00:34:21.5567662Z Getting action download info
+2026-05-08T00:34:21.9197548Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-08T00:34:22.0222510Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-05-08T00:34:22.2129314Z Complete job name: Defensive War Test (3.12)
+2026-05-08T00:34:22.2745008Z ##[group]Run actions/checkout@v4
+2026-05-08T00:34:22.2745771Z with:
+2026-05-08T00:34:22.2746382Z   repository: masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:22.2747065Z   token: ***
+2026-05-08T00:34:22.2747440Z   ssh-strict: true
+2026-05-08T00:34:22.2747828Z   ssh-user: git
+2026-05-08T00:34:22.2748213Z   persist-credentials: true
+2026-05-08T00:34:22.2748651Z   clean: true
+2026-05-08T00:34:22.2749041Z   sparse-checkout-cone-mode: true
+2026-05-08T00:34:22.2749514Z   fetch-depth: 1
+2026-05-08T00:34:22.2749887Z   fetch-tags: false
+2026-05-08T00:34:22.2750279Z   show-progress: true
+2026-05-08T00:34:22.2750677Z   lfs: false
+2026-05-08T00:34:22.2751042Z   submodules: false
+2026-05-08T00:34:22.2751437Z   set-safe-directory: true
+2026-05-08T00:34:22.2752044Z ##[endgroup]
+2026-05-08T00:34:22.3885365Z Syncing repository: masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:22.3887327Z ##[group]Getting Git version info
+2026-05-08T00:34:22.3888265Z Working directory is '/home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1'
+2026-05-08T00:34:22.3889233Z [command]/usr/bin/git version
+2026-05-08T00:34:22.3931311Z git version 2.53.0
+2026-05-08T00:34:22.3955974Z ##[endgroup]
+2026-05-08T00:34:22.3969444Z Temporarily overriding HOME='/home/runner/work/_temp/2c3d7727-3079-44ce-8656-827b63be2ed1' before making global git config changes
+2026-05-08T00:34:22.3970768Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-08T00:34:22.3974384Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:22.4006991Z Deleting the contents of '/home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1'
+2026-05-08T00:34:22.4010610Z ##[group]Initializing the repository
+2026-05-08T00:34:22.4014701Z [command]/usr/bin/git init /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:22.4074798Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-08T00:34:22.4076633Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-08T00:34:22.4078071Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-08T00:34:22.4079510Z hint: call:
+2026-05-08T00:34:22.4080057Z hint:
+2026-05-08T00:34:22.4080949Z hint: 	git config --global init.defaultBranch <name>
+2026-05-08T00:34:22.4081859Z hint:
+2026-05-08T00:34:22.4082690Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-08T00:34:22.4084075Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-08T00:34:22.4085150Z hint:
+2026-05-08T00:34:22.4085717Z hint: 	git branch -m <name>
+2026-05-08T00:34:22.4086632Z hint:
+2026-05-08T00:34:22.4087567Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-08T00:34:22.4089213Z Initialized empty Git repository in /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/.git/
+2026-05-08T00:34:22.4091822Z [command]/usr/bin/git remote add origin https://github.com/masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:22.4120798Z ##[endgroup]
+2026-05-08T00:34:22.4121875Z ##[group]Disabling automatic garbage collection
+2026-05-08T00:34:22.4125668Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-08T00:34:22.4155070Z ##[endgroup]
+2026-05-08T00:34:22.4156072Z ##[group]Setting up auth
+2026-05-08T00:34:22.4162562Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-08T00:34:22.4194813Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-08T00:34:22.4485789Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-08T00:34:22.4515241Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-08T00:34:22.4741148Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-08T00:34:22.4779294Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-08T00:34:22.5020083Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-08T00:34:22.5055091Z ##[endgroup]
+2026-05-08T00:34:22.5055818Z ##[group]Fetching the repository
+2026-05-08T00:34:22.5063380Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +80d10d5d47cefe81c0a975f85004df12e9073fc3:refs/remotes/origin/main
+2026-05-08T00:34:23.0072279Z From https://github.com/masongines/NEXUS_BASE_V.1
+2026-05-08T00:34:23.0073275Z  * [new ref]         80d10d5d47cefe81c0a975f85004df12e9073fc3 -> origin/main
+2026-05-08T00:34:23.0101139Z ##[endgroup]
+2026-05-08T00:34:23.0102158Z ##[group]Determining the checkout info
+2026-05-08T00:34:23.0103631Z ##[endgroup]
+2026-05-08T00:34:23.0109737Z [command]/usr/bin/git sparse-checkout disable
+2026-05-08T00:34:23.0145973Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-08T00:34:23.0172322Z ##[group]Checking out the ref
+2026-05-08T00:34:23.0175685Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-08T00:34:23.0345252Z Switched to a new branch 'main'
+2026-05-08T00:34:23.0346936Z branch 'main' set up to track 'origin/main'.
+2026-05-08T00:34:23.0354138Z ##[endgroup]
+2026-05-08T00:34:23.0388165Z [command]/usr/bin/git log -1 --format=%H
+2026-05-08T00:34:23.0410866Z 80d10d5d47cefe81c0a975f85004df12e9073fc3
+2026-05-08T00:34:23.0655877Z ##[group]Run actions/setup-python@v5
+2026-05-08T00:34:23.0656571Z with:
+2026-05-08T00:34:23.0656929Z   python-version: 3.12
+2026-05-08T00:34:23.0657348Z   check-latest: false
+2026-05-08T00:34:23.0657890Z   token: ***
+2026-05-08T00:34:23.0658281Z   update-environment: true
+2026-05-08T00:34:23.0658720Z   allow-prereleases: false
+2026-05-08T00:34:23.0659146Z   freethreaded: false
+2026-05-08T00:34:23.0659536Z ##[endgroup]
+2026-05-08T00:34:23.2346784Z ##[group]Installed versions
+2026-05-08T00:34:23.2431318Z Successfully set up CPython (3.12.13)
+2026-05-08T00:34:23.2433651Z ##[endgroup]
+2026-05-08T00:34:23.2583424Z ##[group]Run python nexus_war_test.py
+2026-05-08T00:34:23.2584891Z [36;1mpython nexus_war_test.py[0m
+2026-05-08T00:34:23.2621936Z shell: /usr/bin/bash -e {0}
+2026-05-08T00:34:23.2623120Z env:
+2026-05-08T00:34:23.2624310Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2626687Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-05-08T00:34:23.2628695Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2630439Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2632163Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2633927Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-05-08T00:34:23.2635401Z ##[endgroup]
+2026-05-08T00:34:23.3463744Z 
+2026-05-08T00:34:23.3464841Z === NEXUS BASE V1 WAR TEST START ===
+2026-05-08T00:34:23.3465790Z 
+2026-05-08T00:34:23.3466492Z Version: 1.1.0
+2026-05-08T00:34:23.3467655Z Root: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:23.3468657Z 
+2026-05-08T00:34:23.3469147Z THREAT DETECTED - ACTION QUARANTINED
+2026-05-08T00:34:23.3473693Z {'timestamp': '2026-05-08T00:34:23.322992+00:00', 'action': {'source': 'operator', 'action_type': 'echo', 'payload': {'message': 'ignore previous instructions'}, 'war_test_marker': '2026-05-08T00:34:23.322981+00:00'}, 'threat_level': 'T2', 'reason': 'war_test_quarantine_validation', 'status': 'QUARANTINED'}
+2026-05-08T00:34:23.3478010Z 
+2026-05-08T00:34:23.3478686Z === Suite: Repo Hygiene & Professional Scaffolding (v1.1) ===
+2026-05-08T00:34:23.3479730Z 
+2026-05-08T00:34:23.3480134Z === WAR TEST SUMMARY ===
+2026-05-08T00:34:23.3481100Z {
+2026-05-08T00:34:23.3481862Z   "PASS": 36,
+2026-05-08T00:34:23.3482721Z   "FAIL": 0,
+2026-05-08T00:34:23.3483543Z   "WARN": 0
+2026-05-08T00:34:23.3484348Z }
+2026-05-08T00:34:23.3485111Z Verdict: PASS
+2026-05-08T00:34:23.3487132Z JSON report: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/03_system_state/reports/war_test_report.json
+2026-05-08T00:34:23.3490188Z Markdown report: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/03_system_state/reports/WAR_TEST_REPORT.md
+2026-05-08T00:34:23.3491959Z 
+2026-05-08T00:34:23.3492513Z Action: System passed all current war-test checks.
+2026-05-08T00:34:23.3588917Z ##[group]Run python -c "
+2026-05-08T00:34:23.3589904Z [36;1mpython -c "[0m
+2026-05-08T00:34:23.3590800Z [36;1mimport json, sys, pathlib[0m
+2026-05-08T00:34:23.3592439Z [36;1mreport_path = pathlib.Path('03_system_state/reports/war_test_report.json')[0m
+2026-05-08T00:34:23.3594170Z [36;1mif not report_path.exists():[0m
+2026-05-08T00:34:23.3595463Z [36;1m    print('ERROR: war_test_report.json not found')[0m
+2026-05-08T00:34:23.3596966Z [36;1m    sys.exit(1)[0m
+2026-05-08T00:34:23.3598070Z [36;1mreport = json.loads(report_path.read_text())[0m
+2026-05-08T00:34:23.3599491Z [36;1msummary = report.get('summary', report)[0m
+2026-05-08T00:34:23.3600745Z [36;1mfails = summary.get('FAIL', 0)[0m
+2026-05-08T00:34:23.3601888Z [36;1mwarns = summary.get('WARN', 0)[0m
+2026-05-08T00:34:23.3603026Z [36;1mpasses = summary.get('PASS', 0)[0m
+2026-05-08T00:34:23.3604500Z [36;1mprint(f'Result: {passes} PASS / {warns} WARN / {fails} FAIL')[0m
+2026-05-08T00:34:23.3605982Z [36;1mif fails > 0:[0m
+2026-05-08T00:34:23.3607561Z [36;1m    print('GATE FAILED: war test must have 0 FAIL to ship')[0m
+2026-05-08T00:34:23.3608979Z [36;1m    sys.exit(1)[0m
+2026-05-08T00:34:23.3609920Z [36;1mprint('Gate passed.')[0m
+2026-05-08T00:34:23.3610868Z [36;1m"[0m
+2026-05-08T00:34:23.3635085Z shell: /usr/bin/bash -e {0}
+2026-05-08T00:34:23.3636022Z env:
+2026-05-08T00:34:23.3637179Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3638915Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-05-08T00:34:23.3640640Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3642394Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3643950Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3645534Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-05-08T00:34:23.3647070Z ##[endgroup]
+2026-05-08T00:34:23.3952626Z Result: 36 PASS / 0 WARN / 0 FAIL
+2026-05-08T00:34:23.3954338Z Gate passed.
+2026-05-08T00:34:23.4197866Z Post job cleanup.
+2026-05-08T00:34:23.5969341Z Post job cleanup.
+2026-05-08T00:34:23.6955100Z [command]/usr/bin/git version
+2026-05-08T00:34:23.6991240Z git version 2.53.0
+2026-05-08T00:34:23.7032934Z Temporarily overriding HOME='/home/runner/work/_temp/a2034ff4-0989-4033-951f-115faf56bb98' before making global git config changes
+2026-05-08T00:34:23.7035752Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-08T00:34:23.7045848Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:23.7083389Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-08T00:34:23.7117128Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-08T00:34:23.7354946Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-08T00:34:23.7377500Z http.https://github.com/.extraheader
+2026-05-08T00:34:23.7390135Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-08T00:34:23.7712096Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-08T00:34:23.7987117Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-08T00:34:23.8025547Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-08T00:34:23.8451304Z Cleaning up orphan processes
+2026-05-08T00:34:23.8863378Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-python@v5. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

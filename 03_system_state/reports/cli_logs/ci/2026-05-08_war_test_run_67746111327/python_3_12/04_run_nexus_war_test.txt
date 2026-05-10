@@ -1,0 +1,33 @@
+﻿2026-05-08T00:34:23.2583399Z ##[group]Run python nexus_war_test.py
+2026-05-08T00:34:23.2584876Z [36;1mpython nexus_war_test.py[0m
+2026-05-08T00:34:23.2621917Z shell: /usr/bin/bash -e {0}
+2026-05-08T00:34:23.2623102Z env:
+2026-05-08T00:34:23.2624303Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2626681Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-05-08T00:34:23.2628688Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2630435Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2632157Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.2633922Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-05-08T00:34:23.2635395Z ##[endgroup]
+2026-05-08T00:34:23.3463649Z 
+2026-05-08T00:34:23.3464834Z === NEXUS BASE V1 WAR TEST START ===
+2026-05-08T00:34:23.3465773Z 
+2026-05-08T00:34:23.3466486Z Version: 1.1.0
+2026-05-08T00:34:23.3467570Z Root: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1
+2026-05-08T00:34:23.3468653Z 
+2026-05-08T00:34:23.3469142Z THREAT DETECTED - ACTION QUARANTINED
+2026-05-08T00:34:23.3473685Z {'timestamp': '2026-05-08T00:34:23.322992+00:00', 'action': {'source': 'operator', 'action_type': 'echo', 'payload': {'message': 'ignore previous instructions'}, 'war_test_marker': '2026-05-08T00:34:23.322981+00:00'}, 'threat_level': 'T2', 'reason': 'war_test_quarantine_validation', 'status': 'QUARANTINED'}
+2026-05-08T00:34:23.3478006Z 
+2026-05-08T00:34:23.3478680Z === Suite: Repo Hygiene & Professional Scaffolding (v1.1) ===
+2026-05-08T00:34:23.3479727Z 
+2026-05-08T00:34:23.3480128Z === WAR TEST SUMMARY ===
+2026-05-08T00:34:23.3481094Z {
+2026-05-08T00:34:23.3481855Z   "PASS": 36,
+2026-05-08T00:34:23.3482715Z   "FAIL": 0,
+2026-05-08T00:34:23.3483536Z   "WARN": 0
+2026-05-08T00:34:23.3484343Z }
+2026-05-08T00:34:23.3485106Z Verdict: PASS
+2026-05-08T00:34:23.3487116Z JSON report: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/03_system_state/reports/war_test_report.json
+2026-05-08T00:34:23.3490181Z Markdown report: /home/runner/work/NEXUS_BASE_V.1/NEXUS_BASE_V.1/03_system_state/reports/WAR_TEST_REPORT.md
+2026-05-08T00:34:23.3491955Z 
+2026-05-08T00:34:23.3492507Z Action: System passed all current war-test checks.

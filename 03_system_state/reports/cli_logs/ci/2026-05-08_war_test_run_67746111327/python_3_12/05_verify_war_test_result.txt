@@ -1,0 +1,29 @@
+﻿2026-05-08T00:34:23.3588898Z ##[group]Run python -c "
+2026-05-08T00:34:23.3589897Z [36;1mpython -c "[0m
+2026-05-08T00:34:23.3590794Z [36;1mimport json, sys, pathlib[0m
+2026-05-08T00:34:23.3592431Z [36;1mreport_path = pathlib.Path('03_system_state/reports/war_test_report.json')[0m
+2026-05-08T00:34:23.3594165Z [36;1mif not report_path.exists():[0m
+2026-05-08T00:34:23.3595457Z [36;1m    print('ERROR: war_test_report.json not found')[0m
+2026-05-08T00:34:23.3596957Z [36;1m    sys.exit(1)[0m
+2026-05-08T00:34:23.3598065Z [36;1mreport = json.loads(report_path.read_text())[0m
+2026-05-08T00:34:23.3599485Z [36;1msummary = report.get('summary', report)[0m
+2026-05-08T00:34:23.3600740Z [36;1mfails = summary.get('FAIL', 0)[0m
+2026-05-08T00:34:23.3601884Z [36;1mwarns = summary.get('WARN', 0)[0m
+2026-05-08T00:34:23.3603021Z [36;1mpasses = summary.get('PASS', 0)[0m
+2026-05-08T00:34:23.3604494Z [36;1mprint(f'Result: {passes} PASS / {warns} WARN / {fails} FAIL')[0m
+2026-05-08T00:34:23.3605938Z [36;1mif fails > 0:[0m
+2026-05-08T00:34:23.3607555Z [36;1m    print('GATE FAILED: war test must have 0 FAIL to ship')[0m
+2026-05-08T00:34:23.3608973Z [36;1m    sys.exit(1)[0m
+2026-05-08T00:34:23.3609915Z [36;1mprint('Gate passed.')[0m
+2026-05-08T00:34:23.3610864Z [36;1m"[0m
+2026-05-08T00:34:23.3635074Z shell: /usr/bin/bash -e {0}
+2026-05-08T00:34:23.3636016Z env:
+2026-05-08T00:34:23.3637171Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3638909Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+2026-05-08T00:34:23.3640632Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3642389Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3643945Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+2026-05-08T00:34:23.3645529Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+2026-05-08T00:34:23.3647061Z ##[endgroup]
+2026-05-08T00:34:23.3952583Z Result: 36 PASS / 0 WARN / 0 FAIL
+2026-05-08T00:34:23.3954289Z Gate passed.

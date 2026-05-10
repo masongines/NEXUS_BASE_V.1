@@ -1,0 +1,32 @@
+﻿2026-05-08T00:34:21.5143734Z Current runner version: '2.334.0'
+2026-05-08T00:34:21.5169321Z ##[group]Runner Image Provisioner
+2026-05-08T00:34:21.5170169Z Hosted Compute Agent
+2026-05-08T00:34:21.5170705Z Version: 20260213.493
+2026-05-08T00:34:21.5171377Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-08T00:34:21.5172101Z Build Date: 2026-02-13T00:28:41Z
+2026-05-08T00:34:21.5172828Z Worker ID: {0438f245-131c-440c-96ed-d60532a807d7}
+2026-05-08T00:34:21.5173512Z Azure Region: centralus
+2026-05-08T00:34:21.5174169Z ##[endgroup]
+2026-05-08T00:34:21.5175351Z ##[group]Operating System
+2026-05-08T00:34:21.5175952Z Ubuntu
+2026-05-08T00:34:21.5176837Z 24.04.4
+2026-05-08T00:34:21.5177319Z LTS
+2026-05-08T00:34:21.5177781Z ##[endgroup]
+2026-05-08T00:34:21.5178328Z ##[group]Runner Image
+2026-05-08T00:34:21.5178893Z Image: ubuntu-24.04
+2026-05-08T00:34:21.5179375Z Version: 20260413.86.1
+2026-05-08T00:34:21.5180418Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-08T00:34:21.5182037Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-08T00:34:21.5183009Z ##[endgroup]
+2026-05-08T00:34:21.5184041Z ##[group]GITHUB_TOKEN Permissions
+2026-05-08T00:34:21.5185969Z Contents: read
+2026-05-08T00:34:21.5186995Z Metadata: read
+2026-05-08T00:34:21.5187473Z Packages: read
+2026-05-08T00:34:21.5188031Z ##[endgroup]
+2026-05-08T00:34:21.5190188Z Secret source: Actions
+2026-05-08T00:34:21.5190845Z Prepare workflow directory
+2026-05-08T00:34:21.5529956Z Prepare all required actions
+2026-05-08T00:34:21.5567631Z Getting action download info
+2026-05-08T00:34:21.9197510Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-08T00:34:22.0222487Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-05-08T00:34:22.2129287Z Complete job name: Defensive War Test (3.12)

@@ -1,0 +1,32 @@
+﻿2026-05-08T00:34:15.5045099Z Current runner version: '2.334.0'
+2026-05-08T00:34:15.5069730Z ##[group]Runner Image Provisioner
+2026-05-08T00:34:15.5070601Z Hosted Compute Agent
+2026-05-08T00:34:15.5071245Z Version: 20260213.493
+2026-05-08T00:34:15.5071837Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-08T00:34:15.5072534Z Build Date: 2026-02-13T00:28:41Z
+2026-05-08T00:34:15.5073143Z Worker ID: {a8ce9e69-e516-44c8-9667-4fc43df6a61c}
+2026-05-08T00:34:15.5073904Z Azure Region: westcentralus
+2026-05-08T00:34:15.5074476Z ##[endgroup]
+2026-05-08T00:34:15.5076100Z ##[group]Operating System
+2026-05-08T00:34:15.5076845Z Ubuntu
+2026-05-08T00:34:15.5077302Z 24.04.4
+2026-05-08T00:34:15.5077758Z LTS
+2026-05-08T00:34:15.5078240Z ##[endgroup]
+2026-05-08T00:34:15.5078783Z ##[group]Runner Image
+2026-05-08T00:34:15.5079295Z Image: ubuntu-24.04
+2026-05-08T00:34:15.5079842Z Version: 20260413.86.1
+2026-05-08T00:34:15.5080804Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-08T00:34:15.5082533Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-08T00:34:15.5083398Z ##[endgroup]
+2026-05-08T00:34:15.5084470Z ##[group]GITHUB_TOKEN Permissions
+2026-05-08T00:34:15.5086535Z Contents: read
+2026-05-08T00:34:15.5087080Z Metadata: read
+2026-05-08T00:34:15.5087668Z Packages: read
+2026-05-08T00:34:15.5088240Z ##[endgroup]
+2026-05-08T00:34:15.5090343Z Secret source: Actions
+2026-05-08T00:34:15.5091143Z Prepare workflow directory
+2026-05-08T00:34:15.5487056Z Prepare all required actions
+2026-05-08T00:34:15.5525553Z Getting action download info
+2026-05-08T00:34:15.9358634Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-08T00:34:16.0610855Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-05-08T00:34:16.2503406Z Complete job name: Defensive War Test (3.11)
