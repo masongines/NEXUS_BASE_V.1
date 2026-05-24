@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEXUS Council Review — Storyboard</title>
+<style>
+  :root {
+    --bg: #07090f;
+    --panel: #0d1117;
+    --grid: rgba(0, 212, 255, 0.05);
+    --cyan: #00d4ff;
+    --green: #00ff88;
+    --red: #ff4757;
+    --amber: #ffa502;
+    --violet: #b794f6;
+    --mute: #8b949e;
+    --text: #e6edf3;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0; min-height: 100%;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 10%, rgba(183,148,246,0.08), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 39px, var(--grid) 39px 40px),
+      repeating-linear-gradient(90deg, transparent 0 39px, var(--grid) 39px 40px);
+    z-index: 0;
+  }
+
+  .mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+
+  header {
+    position: relative; z-index: 1;
+    padding: 32px 48px 0;
+  }
+  header .chip {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid var(--violet);
+    color: var(--violet);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.3em;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  header h1 {
+    font-size: 2.4em;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  header h1 .accent { color: var(--violet); }
+  header p {
+    color: var(--mute);
+    margin: 10px 0 0;
+    max-width: 760px;
+    line-height: 1.5;
+  }
+
+  .track {
+    position: relative; z-index: 1;
+    padding: 36px 48px 80px;
+  }
+
+  .stage {
+    margin-top: 48px;
+    border-left: 2px solid rgba(183, 148, 246, 0.35);
+    padding-left: 28px;
+    position: relative;
+  }
+  .stage::before {
+    content: '';
+    position: absolute;
+    left: -7px; top: 8px;
+    width: 12px; height: 12px;
+    background: var(--violet);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--violet);
+  }
+
+  .stage .step-marker {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--violet);
+    font-size: 0.7em;
+    letter-spacing: 0.3em;
+    margin-bottom: 6px;
+  }
+  .stage h2 {
+    margin: 0 0 4px;
+    font-size: 1.5em;
+  }
+  .stage .sub {
+    color: var(--mute);
+    font-size: 0.95em;
+  }
+
+  .action-card {
+    background: var(--panel);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    line-height: 1.7;
+  }
+  .action-card .kv { display: grid; grid-template-columns: 160px 1fr; gap: 10px; }
+  .action-card .k { color: var(--mute); }
+  .action-card .v { color: var(--text); }
+  .action-card .v.cyan { color: var(--cyan); }
+
+  .council {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .lens {
+    background: var(--panel);
+    border-top: 3px solid;
+    border-radius: 6px;
+    padding: 22px;
+  }
+  .lens .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .lens .name {
+    font-size: 1.3em;
+    font-weight: 700;
+    margin: 6px 0 10px;
+  }
+  .lens .quote {
+    color: var(--mute);
+    font-size: 0.85em;
+    line-height: 1.55;
+    font-style: italic;
+    border-left: 2px solid currentColor;
+    padding-left: 12px;
+    margin: 12px 0;
+  }
+  .lens .verdict {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+  .v-yes  { background: rgba(0,255,136,0.12); color: var(--green); border: 1px solid rgba(0,255,136,0.4); }
+  .v-cond { background: rgba(255,165,2,0.12); color: var(--amber); border: 1px solid rgba(255,165,2,0.4); }
+  .v-no   { background: rgba(255,71,87,0.12); color: var(--red);   border: 1px solid rgba(255,71,87,0.4); }
+
+  .lens.vault    { border-color: var(--violet); }
+  .lens.vault    .role, .lens.vault .quote   { color: var(--violet); }
+  .lens.research { border-color: var(--cyan); }
+  .lens.research .role, .lens.research .quote { color: var(--cyan); }
+  .lens.engineer { border-color: var(--amber); }
+  .lens.engineer .role, .lens.engineer .quote { color: var(--amber); }
+  .lens.core     { border-color: var(--green); }
+  .lens.core     .role, .lens.core .quote     { color: var(--green); }
+
+  .lens .quote, .lens .name { color: var(--text) !important; }
+  .lens.vault    .name { color: var(--violet) !important; }
+  .lens.research .name { color: var(--cyan)   !important; }
+  .lens.engineer .name { color: var(--amber)  !important; }
+  .lens.core     .name { color: var(--green)  !important; }
+
+  .tally {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 22px 26px;
+    background: var(--panel);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    align-items: center;
+  }
+  .tally .cell { text-align: center; }
+  .tally .cell .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.4em;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .tally .cell .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.25em;
+    color: var(--mute);
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+  .tally .cell.yes  .num { color: var(--green); }
+  .tally .cell.cond .num { color: var(--amber); }
+  .tally .cell.no   .num { color: var(--red); }
+
+  .tally .quorum { text-align: right; }
+  .tally .quorum .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    color: var(--mute);
+  }
+  .tally .quorum .state {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1em;
+    color: var(--green);
+    margin-top: 4px;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+
+  .hub-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .hub-chip {
+    padding: 14px 12px;
+    border-radius: 6px;
+    background: var(--panel);
+    border: 1px solid rgba(139,148,158,0.3);
+    text-align: center;
+    font-size: 0.85em;
+  }
+  .hub-chip.active {
+    border-color: var(--green);
+    background: rgba(0, 255, 136, 0.06);
+  }
+  .hub-chip .glyph {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mute);
+    font-size: 0.85em;
+  }
+  .hub-chip.active .glyph { color: var(--green); }
+  .hub-chip .label { margin-top: 6px; font-size: 0.95em; }
+
+  .outcome {
+    margin-top: 30px;
+    padding: 28px 32px;
+    border: 1px solid var(--green);
+    background: rgba(0, 255, 136, 0.04);
+    border-radius: 8px;
+  }
+  .outcome .head {
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.3em;
+  }
+  .outcome .text { margin-top: 12px; font-size: 1.2em; line-height: 1.5; }
+  .outcome .text .accent { color: var(--green); }
+  .outcome .meta { margin-top: 16px; color: var(--mute); font-size: 0.85em; }
+
+  .crosslink {
+    margin-top: 60px;
+    padding: 22px 26px;
+    border: 1px dashed rgba(0, 212, 255, 0.4);
+    border-radius: 8px;
+    color: var(--mute);
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+  .crosslink b { color: var(--cyan); }
+  .crosslink a { color: var(--cyan); text-decoration: none; border-bottom: 1px dashed var(--cyan); }
+
+  footer {
+    position: relative; z-index: 1;
+    padding: 28px 48px 60px;
+    color: var(--mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1000px) {
+    .council { grid-template-columns: 1fr 1fr; }
+    .hub-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="chip">COUNCIL &middot; STORYBOARD</span>
+  <h1>One action. <span class="accent">Four lenses.</span> Structured agreement.</h1>
+  <p>This is a worked example: a non-trivial governance request travels through the NEXUS review council before it is allowed to reach an autonomous agent. Each panel below is a frame in the storyboard.</p>
+</header>
+
+<div class="track">
+
+  <div class="stage">
+    <div class="step-marker">FRAME 01 &middot; INTAKE</div>
+    <h2>The operator submits an action.</h2>
+    <div class="sub">A non-trivial action arrives. It is more than a routine echo &mdash; it requests a state change. The Hub does not auto-execute. It routes the action to the council.</div>
+    <div class="action-card">
+      <div class="kv">
+        <span class="k">action_id</span>      <span class="v cyan">e91d4b87-2c0a-4a1d-b6f1-0c00f2f9a3b1</span>
+        <span class="k">timestamp</span>      <span class="v">2026-05-08T14:22:01Z</span>
+        <span class="k">source</span>         <span class="v">operator</span>
+        <span class="k">action_type</span>    <span class="v cyan">governance_event</span>
+        <span class="k">payload.subject</span><span class="v">"Promote echo trust_level T3 -> T2"</span>
+        <span class="k">payload.reason</span> <span class="v">"observed unexpected log-volume spike"</span>
+        <span class="k">requires_approval</span><span class="v">true</span>
+        <span class="k">status</span>          <span class="v cyan">proposed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="step-marker">FRAME 02 &middot; PRECONDITION</div>
+    <h2>Security clears the action for review.</h2>
+    <div class="sub">Before the council convenes, the rule-based monitor scans the payload. The action contains no injection markers, no bypass language, no exfiltration keywords. It passes. Security <em>always</em> runs first.</div>
+    <div class="action-card">
+      <div class="kv">
+        <span class="k">detect_threat()</span> <span class="v cyan">-> { "threat": false }</span>
+        <span class="k">trust_lookup</span>    <span class="v">governance_event -> T2 &middot; auto_approved=false</span>
+        <span class="k">routed_to</span>       <span class="v cyan">council_review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="step-marker">FRAME 03 &middot; DELIBERATION</div>
+    <h2>Four lenses reason independently.</h2>
+    <div class="sub">Each member evaluates the same action from a different angle &mdash; not a vote of taste, but a cross-section of governance, evidence, structure, and adversarial review.</div>
+
+    <div class="council">
+      <div class="lens vault">
+        <div class="role">LENS 01</div>
+        <div class="name">Vault</div>
+        <div class="quote">"The log-volume spike claim is supported by the past-7-day execution log. Source truth confirmed. Prior promotions of this kind have a documented review trail."</div>
+        <div class="verdict v-yes">AGREE</div>
+      </div>
+
+      <div class="lens research">
+        <div class="role">LENS 02</div>
+        <div class="name">Researcher</div>
+        <div class="quote">"Demoting T3 -> T2 increases friction but reduces silent-pass surface. Adversarial scenario test: if a payload bypassed security but was T3, demotion catches it on next review. Net safety positive."</div>
+        <div class="verdict v-yes">AGREE</div>
+      </div>
+
+      <div class="lens engineer">
+        <div class="role">LENS 03</div>
+        <div class="name">Engineer</div>
+        <div class="quote">"Concrete implementation: a JSON edit at <span class="mono">02_config/execution_trust_registry.json</span> followed by a war-test re-run. Reversible. Single file. CI confirms green badge after."</div>
+        <div class="verdict v-cond">CONDITIONAL &mdash; re-run war test</div>
+      </div>
+
+      <div class="lens core">
+        <div class="role">LENS 04</div>
+        <div class="name">Nexus Core</div>
+        <div class="quote">"Within operator authority. Does not modify doctrine. Does not bypass approval. Logs the change. Preserves the security-overrides-trust ordering. Clean."</div>
+        <div class="verdict v-yes">AGREE</div>
+      </div>
+    </div>
+
+    <div class="tally">
+      <div class="cell yes"><div class="num">3</div><div class="lbl">Agree</div></div>
+      <div class="cell cond"><div class="num">1</div><div class="lbl">Conditional</div></div>
+      <div class="cell no"><div class="num">0</div><div class="lbl">Block</div></div>
+      <div class="quorum">
+        <div class="label">QUORUM</div>
+        <div class="state">REACHED</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="step-marker">FRAME 04 &middot; CLASSIFICATION</div>
+    <h2>The Hub classifies the council output.</h2>
+    <div class="sub">The Hub is a traffic controller, not a sovereign. It receives the council's structured agreement and labels what kind of next step it warrants.</div>
+    <div class="hub-row">
+      <div class="hub-chip"><div class="glyph">o</div><div class="label">Advisory</div></div>
+      <div class="hub-chip active"><div class="glyph">[+]</div><div class="label">Ready for Operator Review</div></div>
+      <div class="hub-chip"><div class="glyph">[ ]</div><div class="label">Ready for Execution</div></div>
+      <div class="hub-chip"><div class="glyph">x</div><div class="label">Blocked</div></div>
+      <div class="hub-chip"><div class="glyph">^</div><div class="label">Escalated</div></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="step-marker">FRAME 05 &middot; OPERATOR DECISION</div>
+    <h2>The operator presses the gate.</h2>
+    <div class="sub">The Engineer's conditional ("re-run war test") is folded into the execution package. The operator approves with the war-test re-run as a hard prerequisite. The action becomes execution-ready &mdash; but only because a human said yes.</div>
+
+    <div class="outcome">
+      <div class="head">FINAL OUTCOME &mdash; APPROVED WITH PRE-EXECUTION GATE</div>
+      <div class="text">
+        <span class="accent">Council quorum:</span> reached (3 agree, 1 conditional)<br/>
+        <span class="accent">Hub classification:</span> ready for operator review<br/>
+        <span class="accent">Operator decision:</span> approved<br/>
+        <span class="accent">Pre-execution gate:</span> nexus_war_test.py must pass before merge<br/>
+        <span class="accent">Audit:</span> entry written to <span class="mono">04_logs/execution/log.txt</span>
+      </div>
+      <div class="meta">No agent has acted yet. No registry mutation has occurred yet. This frame ends with intent + gate, not effect.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="step-marker">FRAME 06 &middot; DOCTRINE</div>
+    <h2>What never changed during this review.</h2>
+    <div class="sub">No matter what the council recommended, no matter what the operator decided, the same six rules held throughout the process.</div>
+    <div class="action-card" style="border-color: rgba(183,148,246,0.4);">
+      <div style="line-height: 2; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.95em;">
+        <div><span style="color: var(--violet);">-></span> No self-authorisation</div>
+        <div><span style="color: var(--violet);">-></span> No hidden execution</div>
+        <div><span style="color: var(--violet);">-></span> Memory is not truth</div>
+        <div><span style="color: var(--violet);">-></span> Logs are not authority</div>
+        <div><span style="color: var(--violet);">-></span> Security overrides trust</div>
+        <div><span style="color: var(--violet);">-></span> Operator authority remains final</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crosslink">
+    <b>Continues into the execution pipeline.</b>
+    Once the operator approves and the war test re-passes, the action re-enters <span class="mono">executor.py</span> at the Security stage &mdash;
+    not as a council output, but as a new <span class="mono">"proposed"</span> action with full provenance attached.
+    See <a href="index.html">the main deck</a> for the execution pipeline, and <a href="war_test_replay.html">the war-test replay</a> for the validation step.
+  </div>
+</div>
+
+<footer>
+  COUNCIL &middot; STORYBOARD &middot; NEXUS BASE V1 &middot; DRAFT &middot; 2026
+</footer>
+
+</body>
+</html>
