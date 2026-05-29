@@ -1,0 +1,7 @@
+interface:
+  display_name: "NEXUS Deep Dive Reporter"
+  short_description: "Source-labeled NEXUS deep-dive reports"
+  default_prompt: "Use $nexus-deep-dive-reporter to produce a source-labeled NEXUS deep-dive report."
+
+policy:
+  allow_implicit_invocation: false
