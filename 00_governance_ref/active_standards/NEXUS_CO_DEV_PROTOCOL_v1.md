@@ -9,7 +9,7 @@
 | **Version** | 1.0 |
 | **Codified** | 2026-05-20 (codification of practice operative since 2026-05-13) |
 | **Authority** | Operator (sole root authority). This document is a reference codification of operative practice — not new authority. |
-| **Cross-references** | ADR-001 (Governance-First Architecture) · ADR-004 (Tri-Sync) · ADR-007 (Operator Fault Logging Doctrine — DRAFT, when accepted) · `NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md` |
+| **Cross-references** | ADR-001 (Governance-First Architecture) · ADR-004 (Tri-Sync) · ADR-007 (Operator Fault Logging Doctrine — Proposed, authored 2026-05-29, `docs/adr/ADR-007-operator-fault-logging.md`) · `NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md` |
 | **Candidate location** | `00_governance_ref/active_standards/NEXUS_CO_DEV_PROTOCOL_v1.md` or `06_operator/NEXUS_CO_DEV_PROTOCOL_v1.md` (operator decides) |
 | **Supersedes** | Nothing (first codification) |
 
@@ -261,7 +261,7 @@ When the active ledger exceeds 15 items, batch sunset review is recommended even
 
 ## §9 — Fault Handling (Forward Reference to ADR-007)
 
-Faults occur. The protocol for handling them is being codified in ADR-007 (Operator Fault Logging Doctrine, currently DRAFT).
+Faults occur. The protocol for handling them is codified in ADR-007 (Operator Fault Logging Doctrine) — authored 2026-05-29 as **Proposed** at `docs/adr/ADR-007-operator-fault-logging.md`, pending operator acceptance.
 
 Until ADR-007 is ACCEPTED, the interim discipline is:
 1. Acknowledge the fault plainly when surfaced (either by operator or by Claude's own audit)
