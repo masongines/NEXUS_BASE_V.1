@@ -35,3 +35,19 @@ Thumbs.db
 
 # Large binary reference files (PDFs stored outside git)
 *.pdf
+
+# ── Local-first: never-publish working material (stays on disk only) ──
+.codex/
+02_config/local/
+03_system_state/context_exports/
+07_reference_material/working_reference/DATA/
+07_reference_material/working_reference/NEXUS_PROTOTYPE/
+07_reference_material/working_reference/CLAUDE_DATA/
+07_reference_material/working_reference/CHATGPT_CODEX_REPORTS/
+07_reference_material/working_reference/CHATGPT_PULSE_REPORTS/
+# Binary / archive artifacts (defense in depth)
+*.zip
+*.tar.gz
+*.gz
+*.msi
+*.exe
