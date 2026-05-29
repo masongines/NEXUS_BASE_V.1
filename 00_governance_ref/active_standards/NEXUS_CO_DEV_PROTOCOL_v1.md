@@ -5,7 +5,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | PROPOSED (not yet promoted to ACCEPTED via Doctrine Promotion Protocol) |
+| **Status** | ACTIVE — promoted by operator ruling 2026-05-29 (operator correction, top of S-2), superseding the prior ADR-007-pending gate. Doctrine-registry promotion to ACCEPTED via Doctrine Promotion Protocol remains a separate optional step (CODEV-2). |
 | **Version** | 1.0 |
 | **Codified** | 2026-05-20 (codification of practice operative since 2026-05-13) |
 | **Authority** | Operator (sole root authority). This document is a reference codification of operative practice — not new authority. |
@@ -23,7 +23,7 @@
 
 **Self-referential note:** This protocol governs how Claude collaborates with the operator. Claude is also the drafter. The drafting itself was performed under this protocol — Tier 1 sandbox, operator review, no silent promotion. That's intentional. The protocol is operative; the document records it.
 
-**Status caveat:** PROPOSED, not ACCEPTED. Operator may amend, defer, or invoke Doctrine Promotion Protocol to make it active doctrine. Until promoted, this is a reference codification — operative as practice, not yet binding as doctrine.
+**Status caveat:** ACTIVE as an active standard by operator ruling 2026-05-29 (operator correction, top of S-2), superseding the prior PROPOSED / ADR-007-pending gate. Not yet ACCEPTED into the doctrine registry — the operator may still invoke the Doctrine Promotion Protocol for that separate step. ADR-007 (Operator Fault Logging) remains a recommended follow-up (P-4), not a blocker.
 
 ---
 
@@ -326,7 +326,7 @@ Memory and retrieval do NOT appear in this hierarchy as authority sources. They 
 |---|---|
 | ADR-001 through ADR-004 | Architectural decisions. Co-Dev v1.0 references them; does not modify them. |
 | ADR-007 (DRAFT) | Fault-handling extension of Co-Dev v1.0. When ACCEPTED, §9 above gets updated. |
-| Active standards (9 as of 2026-05-20) | Co-Dev v1.0 is itself proposed as a candidate active standard. |
+| Active standards (9 as of 2026-05-20) | Co-Dev v1.0 is itself an ACTIVE standard as of operator ruling 2026-05-29 (previously a candidate). |
 | Doctrine registry (12 files) | Co-Dev v1.0 may be promoted into the registry via Doctrine Promotion Protocol if operator decides. |
 | `NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md` | Co-Dev v1.0 operationalizes the authority boundaries this doc enumerates. |
 | Deferred ledger | Co-Dev v1.0 defines the ledger's sunset rule (§8). |
@@ -370,7 +370,7 @@ Memory and retrieval do NOT appear in this hierarchy as authority sources. They 
 - **Not a constraint on operator behavior.** Operator faults are out of scope.
 - **Not exhaustive.** Edge cases will emerge; surface them, codify when patterned.
 - **Not permanent.** v2.0 will eventually supersede v1.0.
-- **Not doctrine yet.** PROPOSED status. Operator promotes (or doesn't) via Doctrine Promotion Protocol.
+- **Active standard; not doctrine-registry yet.** ACTIVE by operator ruling 2026-05-29; doctrine-registry promotion (ACCEPTED) via Doctrine Promotion Protocol remains a separate operator choice.
 
 ---
 
@@ -394,7 +394,7 @@ The session record across 2026-05-13, 2026-05-14, 2026-05-15, and 2026-05-20 is 
 | ID | Decision | Recommendation |
 |---|---|---|
 | CODEV-1 | Final location: `00_governance_ref/active_standards/` vs `06_operator/` | `active_standards/` — this is operative practice, not operator-private |
-| CODEV-2 | Status: keep PROPOSED, or invoke Doctrine Promotion Protocol to ACCEPTED | Keep PROPOSED for now; promote after ADR-007 is drafted (they cross-reference each other) |
+| CODEV-2 | Status: keep PROPOSED, or invoke Doctrine Promotion Protocol to ACCEPTED | RESOLVED 2026-05-29: operator ruled ACTIVE (operator correction, S-2), superseding the ADR-007 gate. ADR-007 remains a recommended follow-up (P-4), not a blocker. |
 | CODEV-3 | Amendment process: lock to version bumps only, or allow inline minor updates | Lock to version bumps only (per §14 as drafted) |
 | CODEV-4 | Add to active discrepancy register? | No — this is not a discrepancy, it's a codification. No DR needed. |
 | CODEV-5 | Cross-reference back from existing ADRs (001-004) to mention Co-Dev v1.0? | Optional. Not required for v1.0 to function. |
@@ -409,7 +409,7 @@ The session record across 2026-05-13, 2026-05-14, 2026-05-15, and 2026-05-20 is 
 | **For** | Mason Gines (Sovereign Operator) and future Claude instances |
 | **Session of drafting** | 2026-05-20 (laptop continuation) |
 | **Drafting ceremony** | Tier 1, sandbox in `/mnt/user-data/outputs/`, operator review pending, no workspace touch from this session |
-| **Promotion status** | PROPOSED — operator decides next move |
+| **Promotion status** | ACTIVE — promoted by operator ruling 2026-05-29 (operator correction, S-2). Prior ADR-007-pending gate superseded; ADR-007 remains a follow-up (P-4). |
 | **Save target** | Knowledge sources (operator-driven), and eventually workspace location per CODEV-1 |
 | **Companion documents** | ADR-007 (when drafted) · Active standards list · Doctrine registry index |
 
