@@ -35,10 +35,10 @@
   },
   "activeStandards": {
     "countOnDisk": 11,
-    "manifestCount": 8,
-    "feedClass": "STALE",
-    "flag": "FL-002 — manifest drift (8 vs 11) + phantom META_CONTROL_CENTER.md. Regenerate via generator (operator-gated); do not hand-edit.",
-    "source": "00_governance_ref/active_standards/ vs support_records/KERNEL_MANIFEST.json"
+    "manifestCount": 11,
+    "feedClass": "OPERATOR_LOGGED",
+    "flag": "FL-002 output-lane RESOLVED 2026-05-31: 03_system_state manifest regenerated 8->11 (commit 0879c1b; generated, not hand-edited). OPEN (structural, operator-gated): support_records/KERNEL_MANIFEST.json legacy copy still lists phantom META_CONTROL_CENTER.md at count 8.",
+    "source": "03_system_state/manifests/KERNEL_MANIFEST.json (11) vs support_records/ legacy copy (8, phantom)"
   },
   "adrs": [
     { "id": "ADR-001", "title": "Governance-First Architecture", "status": "ACCEPTED" },

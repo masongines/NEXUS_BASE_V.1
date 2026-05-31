@@ -50,3 +50,14 @@ Entries are append-only. Record resolution as a new `Status`/`Resolution` state;
 - Status:      RESOLVED (test only)
 - Resolution:  Mechanism verified; this entry is illustrative and carries no governance weight. Safe to leave or prune.
 - ADR-007 ref: demonstrates the operator-override ceremony format.
+
+### FL-002 — UPDATE 2026-05-31 (partial resolution: output-lane manifest regenerated)
+- Date:        2026-05-31
+- Category:    system
+- Source:      C2 (Claude Code) under operator authorization ("do #1, manifest regen")
+- Provenance:  EVIDENCE | high
+- Description: Investigation refined FL-002 — the two manifests are DIFFERENT artifacts, not one drift. `03_system_state/manifests/KERNEL_MANIFEST.json` (current generator output, simple schema) was stale at `active_standard_count: 8` and has NO phantom. The phantom `META_CONTROL_CENTER.md` exists ONLY in `00_governance_ref/support_records/KERNEL_MANIFEST.json` (legacy 2026-03-19 rich schema, `governance_kernel/` scan root), which `manifest_generator.py` v1.1 does NOT write.
+- Action:      Ran `manifest_generator.py` (read-only scan + single output write). `03_system_state/manifests/KERNEL_MANIFEST.json` regenerated: `active_standard_count` 8 -> 11 (added CLI_LOGS_SUB_LANE_CONVENTION_v1.md, CO-DEV_3.33_NEXUS_META_CENTER_UI_DASHBOARD_ENGINEER_BOOTSTRAP_v1.md, NEXUS_CO_DEV_PROTOCOL_v1.md); doctrine 12 / support records 8 unchanged. Generated, not hand-edited. Commit `0879c1b` on `local-work` (not pushed).
+- Status:      PARTIALLY RESOLVED — output-lane manifest RESOLVED; support_records/ legacy copy + phantom OPEN.
+- Resolution:  Output-lane drift fixed. The original FL-002 plan ("regenerate both") is not achievable with generator v1.1 (it manages only the output copy). Deciding the canonical manifest and retiring/superseding the legacy support_records copy (which still carries the phantom) is a STRUCTURAL change — escalated to operator per the standing rule "any structural change to the NEXUS system as a whole comes to the operator first." NOT actioned.
+- ADR-007 ref: system-fault category; partial remediation recorded append-only; structural remainder gated to operator.
