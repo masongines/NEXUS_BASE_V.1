@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_kind": "generated_inventory",
   "kernel_name": "NEXUS Governance Kernel",
-  "generated_at": "2026-04-16T18:24:45",
+  "generated_at": "2026-05-31T07:06:51",
   "inventory_basis": {
     "doctrine_identity_source": "DOCTRINE_IDENTITY_REGISTRY.md",
     "artifact_scan_root": "00_governance_ref/",
@@ -11,7 +11,7 @@
   },
   "counts": {
     "canonical_doctrine_count": 12,
-    "active_standard_count": 8,
+    "active_standard_count": 11,
     "support_record_count": 8
   },
   "doctrine_files": [
@@ -29,11 +29,14 @@
     "TERMINOLOGY_INDEX.md"
   ],
   "active_standard_files": [
+    "CLI_LOGS_SUB_LANE_CONVENTION_v1.md",
+    "CO-DEV_3.33_NEXUS_META_CENTER_UI_DASHBOARD_ENGINEER_BOOTSTRAP_v1.md",
     "DECISION_REGISTER_v1.md",
     "GOVERNED_AGENT_LAYER_v1.md",
     "GUARDIAN_AUTOMATION_SPEC_v1.md",
     "MANIFEST_GENERATOR_SPEC_v1.md",
     "NEXUS_AUTHORITY_AND_BOUNDARY_SAFEGUARDS_v1.md",
+    "NEXUS_CO_DEV_PROTOCOL_v1.md",
     "NEXUS_OPERATOR_ENGAGEMENT_MODEL_v2.md",
     "NEXUS_SECURITY_AND_INCIDENT_RESPONSE_v1.md",
     "SNAPSHOT_GENERATOR_SPEC_v1.md"
