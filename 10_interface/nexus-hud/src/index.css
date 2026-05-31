@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-slate-950 font-sans text-slate-100;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Custom thin scrollbars in dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-800;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-700;
+  }
+
+  /* Selection — indigo, NEXUS-coded */
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.35);
+    color: #f1f5f9;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image: linear-gradient(rgba(148, 163, 184, 1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 1) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
