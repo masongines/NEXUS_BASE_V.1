@@ -37,8 +37,8 @@
     "countOnDisk": 11,
     "manifestCount": 11,
     "feedClass": "OPERATOR_LOGGED",
-    "flag": "FL-002 output-lane RESOLVED 2026-05-31: 03_system_state manifest regenerated 8->11 (commit 0879c1b; generated, not hand-edited). OPEN (structural, operator-gated): support_records/KERNEL_MANIFEST.json legacy copy still lists phantom META_CONTROL_CENTER.md at count 8.",
-    "source": "03_system_state/manifests/KERNEL_MANIFEST.json (11) vs support_records/ legacy copy (8, phantom)"
+    "flag": "FL-002 RESOLVED 2026-05-31: output-lane manifest reconciled (11); legacy support_records manifest SUPERSEDED (-> KERNEL_MANIFEST.legacy.json + marker); META_CONTROL_CENTER.md retired from KERNEL_HASH.md (operator ruling). 03_system_state copy is canonical.",
+    "source": "03_system_state/manifests/KERNEL_MANIFEST.json (canonical, generated)"
   },
   "adrs": [
     { "id": "ADR-001", "title": "Governance-First Architecture", "status": "ACCEPTED" },

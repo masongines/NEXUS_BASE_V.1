@@ -61,3 +61,25 @@ Entries are append-only. Record resolution as a new `Status`/`Resolution` state;
 - Status:      PARTIALLY RESOLVED — output-lane manifest RESOLVED; support_records/ legacy copy + phantom OPEN.
 - Resolution:  Output-lane drift fixed. The original FL-002 plan ("regenerate both") is not achievable with generator v1.1 (it manages only the output copy). Deciding the canonical manifest and retiring/superseding the legacy support_records copy (which still carries the phantom) is a STRUCTURAL change — escalated to operator per the standing rule "any structural change to the NEXUS system as a whole comes to the operator first." NOT actioned.
 - ADR-007 ref: system-fault category; partial remediation recorded append-only; structural remainder gated to operator.
+
+### FL-002 — OPERATOR RULING 2026-05-31 (META_CONTROL_CENTER.md = legacy / dead)
+- Date:        2026-05-31
+- Category:    operator (ruling)
+- Source:      Operator ("META is old, don't use that")
+- Provenance:  EVIDENCE | high
+- Description: Operator ruled `META_CONTROL_CENTER.md` is OLD / legacy — not a current artifact, not to be used or restored. Confirms the `support_records/` manifest's listing of it is a stale phantom (correctly classified, not live).
+- Scope:       CORRECTION — META appears in TWO places, not one: (1) legacy `support_records/KERNEL_MANIFEST.json` (phantom in its artifact list); AND (2) `support_records/KERNEL_HASH.md` (kernel integrity record holds a SHA for META_CONTROL_CENTER.md — a file absent from disk). An earlier operator question framed the manifest as META's "only remaining appearance"; that was incorrect and is corrected here.
+- Tooling:     No hash-regeneration tool exists in 01_core (generators = manifest / snapshot / context_export; no hashlib / KERNEL_HASH usage). Removing META's hash entry = surgical 2-line removal from KERNEL_HASH.md; the other 15 hashes are for present, unchanged files and remain valid.
+- Status:      classification SETTLED (META = legacy). Full retirement has TWO parts: (a) legacy-manifest supersede [operator-approved] + (b) remove META's stale KERNEL_HASH.md entry [kernel-integrity, NOT yet authorized]. Neither executed — re-confirming full scope first.
+- Resolution:  Pending operator authorization for the COMPLETE META retirement (manifest + integrity hash). No structural change made.
+- ADR-007 ref: operator ruling + scope correction recorded append-only; structural execution gated to operator.
+
+### FL-002 — RESOLVED 2026-05-31 (full META retirement executed, operator-authorized)
+- Date:        2026-05-31
+- Category:    system
+- Source:      C2 (Claude Code) under operator authorization ("Full retirement (both)")
+- Provenance:  EVIDENCE | high
+- Action:      (1) `support_records/KERNEL_MANIFEST.json` renamed to `KERNEL_MANIFEST.legacy.json` (git mv, history preserved) + `KERNEL_MANIFEST.SUPERSEDED.md` marker added; `03_system_state/manifests/KERNEL_MANIFEST.json` declared the canonical generated inventory. (2) `KERNEL_HASH.md`: surgically removed the stale `META_CONTROL_CENTER.md` entry (file absent from disk); the other 15 hashes are for present, unchanged files and remain valid. (3) Re-ran manifest_generator.py — support_record_count 8 -> 9 (now lists KERNEL_MANIFEST.legacy.json + KERNEL_MANIFEST.SUPERSEDED.md).
+- Status:      RESOLVED — both the output-lane drift and the META phantom (manifest + integrity hash) are cleared; META retired everywhere.
+- Resolution:  Non-destructive + git-reversible; no doctrine touched; not pushed. Canonical inventory = `03_system_state/manifests/KERNEL_MANIFEST.json`.
+- ADR-007 ref: system-fault remediation complete; recorded append-only.

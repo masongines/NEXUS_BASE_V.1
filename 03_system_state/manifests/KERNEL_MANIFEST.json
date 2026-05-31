@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_kind": "generated_inventory",
   "kernel_name": "NEXUS Governance Kernel",
-  "generated_at": "2026-05-31T07:06:51",
+  "generated_at": "2026-05-31T07:49:42",
   "inventory_basis": {
     "doctrine_identity_source": "DOCTRINE_IDENTITY_REGISTRY.md",
     "artifact_scan_root": "00_governance_ref/",
@@ -12,7 +12,7 @@
   "counts": {
     "canonical_doctrine_count": 12,
     "active_standard_count": 11,
-    "support_record_count": 8
+    "support_record_count": 9
   },
   "doctrine_files": [
     "PRIME_AXIOM.md",
@@ -45,7 +45,8 @@
     "DOCTRINE_IDENTITY_REGISTRY.md",
     "GOVERNANCE_KERNEL_GUARDIAN.md",
     "KERNEL_HASH.md",
-    "KERNEL_MANIFEST.json",
+    "KERNEL_MANIFEST.legacy.json",
+    "KERNEL_MANIFEST.SUPERSEDED.md",
     "KERNEL_VERSION.md",
     "NEXUS_SANDBOX_PROTOCOL_LOCK_RECORD_v1_1.md",
     "PULSE_CHUNK_1_FULL_BASELINE_CONTROL_REGISTER_v1.md",
