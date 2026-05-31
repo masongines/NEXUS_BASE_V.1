@@ -83,3 +83,6 @@ Entries are append-only. Record resolution as a new `Status`/`Resolution` state;
 - Status:      RESOLVED — both the output-lane drift and the META phantom (manifest + integrity hash) are cleared; META retired everywhere.
 - Resolution:  Non-destructive + git-reversible; no doctrine touched; not pushed. Canonical inventory = `03_system_state/manifests/KERNEL_MANIFEST.json`.
 - ADR-007 ref: system-fault remediation complete; recorded append-only.
+
+### FL-002 — NOTE 2026-05-31 (systemic fix proposed)
+- The recurring class behind FL-002 (a manual, root-less, tool-less kernel-integrity record) now has a proposed systemic fix: **ADR-008 (Proposed)** — kernel integrity via Merkle root + stdlib verifier (`docs/adr/ADR-008-kernel-integrity-merkle.md`). Would auto-detect drift like the META phantom. Not yet accepted or built (operator-gated).
