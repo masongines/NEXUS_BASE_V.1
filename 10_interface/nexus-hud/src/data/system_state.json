@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title": "NEXUS — Reconciled System State",
+    "authority": "INTERFACE SURFACE — NON-AUTHORITATIVE. This view visualizes reconciled state; it never becomes state. If it conflicts with doctrine, ADRs, registers, or workspace files, the workspace files win.",
+    "reconciledBy": "Claude Code (C2 / Primary Implementation seat)",
+    "reconciledOn": "2026-05-31",
+    "gitHead": "4dec846",
+    "snapshotClass": "reference / verification (read this session; NOT a live feed)"
+  },
+  "kernel": {
+    "version": "1.2",
+    "status": "STABLE",
+    "feedClass": "OPERATOR_LOGGED",
+    "source": "00_governance_ref/support_records/KERNEL_VERSION.md"
+  },
+  "doctrine": {
+    "count": 12,
+    "feedClass": "OPERATOR_LOGGED",
+    "source": "00_governance_ref/doctrine/ (12 files) + DOCTRINE_IDENTITY_REGISTRY.md",
+    "note": "Stale dashboard reading of 14 superseded; 12 is canonical."
+  },
+  "coDevProtocol": {
+    "version": "1.0",
+    "status": "ACTIVE",
+    "feedClass": "OPERATOR_LOGGED",
+    "source": "active_standards/NEXUS_CO_DEV_PROTOCOL_v1.md — operator ruling 2026-05-29 (OD-1)"
+  },
+  "warTest": {
+    "pass": 36,
+    "warn": 0,
+    "fail": 0,
+    "verdict": "PASS",
+    "feedClass": "OPERATOR_LOGGED",
+    "source": "03_system_state/reports/war_test_report.json"
+  },
+  "activeStandards": {
+    "countOnDisk": 11,
+    "manifestCount": 11,
+    "feedClass": "OPERATOR_LOGGED",
+    "flag": "FL-002 RESOLVED 2026-05-31: output-lane manifest reconciled (11); legacy support_records manifest SUPERSEDED (-> KERNEL_MANIFEST.legacy.json + marker); META_CONTROL_CENTER.md retired from KERNEL_HASH.md (operator ruling). 03_system_state copy is canonical.",
+    "source": "03_system_state/manifests/KERNEL_MANIFEST.json (canonical, generated)"
+  },
+  "adrs": [
+    { "id": "ADR-001", "title": "Governance-First Architecture", "status": "ACCEPTED" },
+    { "id": "ADR-002", "title": "Rule-Based Threat Detection", "status": "ACCEPTED" },
+    { "id": "ADR-003", "title": "Local-First Architecture", "status": "ACCEPTED" },
+    { "id": "ADR-004", "title": "Tri-Sync Architecture", "status": "ACCEPTED" },
+    { "id": "ADR-007", "title": "Operator Fault Logging", "status": "PROPOSED" }
+  ],
+  "decisionRegister": [
+    { "id": "DR-001", "title": "Terminology collision (NEXUS / AEGIS / Base V1)", "status": "OPEN" },
+    { "id": "DR-002", "title": "AEGIS lifecycle (ACTIVE vs deferred)", "status": "OPEN" }
+  ],
+  "labs": [
+    { "name": "Experimental_Lab", "state": "ACTIVE" },
+    { "name": "Hardware_Lab", "state": "STANDBY" },
+    { "name": "Investing_Lab", "state": "STANDBY" }
+  ],
+  "excluded": [
+    { "name": "AEGIS", "reason": "auxiliary / disabled — excluded from active-lab count" },
+    { "name": "SkillUp_Lab", "reason": "removed from intended architecture" }
+  ],
+  "entropy": {
+    "riskBand": "GREEN",
+    "basis": "baseline-only (no prior snapshot to compare)",
+    "feedClass": "OPERATOR_LOGGED",
+    "source": "00_governance_ref/staged_reviews/SYSTEM_STATE_SNAPSHOT_CURRENT.md"
+  }
+}
