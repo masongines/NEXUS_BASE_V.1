@@ -1,0 +1,1 @@
+Define exact backend files, exact read sources, exact tests, and safety constraints for implementing GET /hud/system-state only.
