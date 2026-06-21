@@ -15,7 +15,7 @@ Most AI systems focus on what AI **can** do. NEXUS focuses on what AI is **allow
 
 The question driving this project: *Under what conditions, and under whose authority, should an AI system be permitted to execute an action?*
 
-NEXUS Base V1 answers that question with a working, testable control architecture: every action must pass a security gate, be validated by a trust registry, receive explicit approval, and be logged — before execution occurs. No exceptions.
+NEXUS Base V1 answers that question with a working, testable control architecture: every action entering the Base V1 governed pipeline must pass a security gate, be validated by a trust registry, receive approval or trusted auto-approval, and be logged before execution occurs inside that pipeline.
 
 ---
 
@@ -46,9 +46,9 @@ python --version
 python nexus_war_test.py
 # Expected: 36 PASS / 0 WARN / 0 FAIL
 
-# Run a live execution through the full governed pipeline
+# Run a local sample execution through the Base V1 governed pipeline
 python 01_core/execution/executor.py
-# Expected: safe action executes through the approved/trusted path
+# Expected: safe sample action executes through the approved/trusted path
 ```
 
 ---
@@ -103,6 +103,8 @@ Every action entering the system is evaluated in sequence:
 06_operator/           Operator plans, checkpoints, decision register
 07_reference_material/ Reference material, audit records, handoff documents
 08_security_index/     Security system map
+09_presentation/       Public-facing demos, scripts, and proof visuals
+10_interface/          Interface prototypes and HUD scaffold materials
 ```
 
 ---
@@ -120,6 +122,17 @@ Every action entering the system is evaluated in sequence:
 
 ---
 
+## Proof Evidence
+
+| Artifact | Purpose |
+|---|---|
+| [WAR_TEST_REPORT.md](03_system_state/reports/WAR_TEST_REPORT.md) | Human-readable validation report showing 36 PASS / 0 WARN / 0 FAIL |
+| [war_test_report.json](03_system_state/reports/war_test_report.json) | Machine-readable validation report supporting the current validation claim |
+| [NEXUS War Test CI](.github/workflows/ci.yml) | GitHub Actions workflow configured to rerun the defensive war test |
+| [War Test Replay](09_presentation/war_test_replay.html) | Presentation/demo artifact for reviewing the war-test flow |
+
+---
+
 ## Validation
 
 The war test (`nexus_war_test.py`) confirms that:
@@ -132,7 +145,7 @@ The war test (`nexus_war_test.py`) confirms that:
 
 **Current result: 36 PASS / 0 WARN / 0 FAIL**
 
-The CI pipeline (`.github/workflows/ci.yml`) re-runs the war test on every push to `main` and every pull request, maintaining a live green badge at the top of this file.
+The CI pipeline (`.github/workflows/ci.yml`) is configured to rerun the war test on every push to `main` and every pull request, with the badge at the top of this file reflecting the current GitHub Actions result.
 
 ---
 
